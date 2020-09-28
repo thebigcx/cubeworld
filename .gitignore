@@ -1,0 +1,12 @@
+# Include directories do not change
+include
+
+# If build directories aren't cleaned, don't commit them
+build
+bin
+
+# CMake renders useless
+Makefile
+
+# Visual Studio Code workspace
+.vscode

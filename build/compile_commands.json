@@ -1,0 +1,12 @@
+[
+{
+  "directory": "/home/christian/Desktop/CubeWorld/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/christian/Desktop/CubeWorld/include  -g   -std=gnu++2a -o CMakeFiles/CubeWorld.dir/src/Main.cpp.o -c /home/christian/Desktop/CubeWorld/src/Main.cpp",
+  "file": "/home/christian/Desktop/CubeWorld/src/Main.cpp"
+},
+{
+  "directory": "/home/christian/Desktop/CubeWorld/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/christian/Desktop/CubeWorld/include  -g   -std=gnu++2a -o CMakeFiles/CubeWorld.dir/src/util/stb_image/stb_image.cpp.o -c /home/christian/Desktop/CubeWorld/src/util/stb_image/stb_image.cpp",
+  "file": "/home/christian/Desktop/CubeWorld/src/util/stb_image/stb_image.cpp"
+}
+]
