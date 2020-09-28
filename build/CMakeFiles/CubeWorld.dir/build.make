@@ -57,9 +57,22 @@ include CMakeFiles/CubeWorld.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/CubeWorld.dir/flags.make
 
+CMakeFiles/CubeWorld.dir/src/Camera.cpp.o: CMakeFiles/CubeWorld.dir/flags.make
+CMakeFiles/CubeWorld.dir/src/Camera.cpp.o: ../src/Camera.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/christian/Desktop/CubeWorld/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/CubeWorld.dir/src/Camera.cpp.o"
+	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CubeWorld.dir/src/Camera.cpp.o -c /home/christian/Desktop/CubeWorld/src/Camera.cpp
+
+CMakeFiles/CubeWorld.dir/src/Camera.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CubeWorld.dir/src/Camera.cpp.i"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/christian/Desktop/CubeWorld/src/Camera.cpp > CMakeFiles/CubeWorld.dir/src/Camera.cpp.i
+
+CMakeFiles/CubeWorld.dir/src/Camera.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CubeWorld.dir/src/Camera.cpp.s"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/christian/Desktop/CubeWorld/src/Camera.cpp -o CMakeFiles/CubeWorld.dir/src/Camera.cpp.s
+
 CMakeFiles/CubeWorld.dir/src/Main.cpp.o: CMakeFiles/CubeWorld.dir/flags.make
 CMakeFiles/CubeWorld.dir/src/Main.cpp.o: ../src/Main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/christian/Desktop/CubeWorld/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/CubeWorld.dir/src/Main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/christian/Desktop/CubeWorld/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CubeWorld.dir/src/Main.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CubeWorld.dir/src/Main.cpp.o -c /home/christian/Desktop/CubeWorld/src/Main.cpp
 
 CMakeFiles/CubeWorld.dir/src/Main.cpp.i: cmake_force
@@ -70,9 +83,74 @@ CMakeFiles/CubeWorld.dir/src/Main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CubeWorld.dir/src/Main.cpp.s"
 	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/christian/Desktop/CubeWorld/src/Main.cpp -o CMakeFiles/CubeWorld.dir/src/Main.cpp.s
 
+CMakeFiles/CubeWorld.dir/src/Mesh.cpp.o: CMakeFiles/CubeWorld.dir/flags.make
+CMakeFiles/CubeWorld.dir/src/Mesh.cpp.o: ../src/Mesh.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/christian/Desktop/CubeWorld/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/CubeWorld.dir/src/Mesh.cpp.o"
+	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CubeWorld.dir/src/Mesh.cpp.o -c /home/christian/Desktop/CubeWorld/src/Mesh.cpp
+
+CMakeFiles/CubeWorld.dir/src/Mesh.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CubeWorld.dir/src/Mesh.cpp.i"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/christian/Desktop/CubeWorld/src/Mesh.cpp > CMakeFiles/CubeWorld.dir/src/Mesh.cpp.i
+
+CMakeFiles/CubeWorld.dir/src/Mesh.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CubeWorld.dir/src/Mesh.cpp.s"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/christian/Desktop/CubeWorld/src/Mesh.cpp -o CMakeFiles/CubeWorld.dir/src/Mesh.cpp.s
+
+CMakeFiles/CubeWorld.dir/src/Shader.cpp.o: CMakeFiles/CubeWorld.dir/flags.make
+CMakeFiles/CubeWorld.dir/src/Shader.cpp.o: ../src/Shader.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/christian/Desktop/CubeWorld/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/CubeWorld.dir/src/Shader.cpp.o"
+	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CubeWorld.dir/src/Shader.cpp.o -c /home/christian/Desktop/CubeWorld/src/Shader.cpp
+
+CMakeFiles/CubeWorld.dir/src/Shader.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CubeWorld.dir/src/Shader.cpp.i"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/christian/Desktop/CubeWorld/src/Shader.cpp > CMakeFiles/CubeWorld.dir/src/Shader.cpp.i
+
+CMakeFiles/CubeWorld.dir/src/Shader.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CubeWorld.dir/src/Shader.cpp.s"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/christian/Desktop/CubeWorld/src/Shader.cpp -o CMakeFiles/CubeWorld.dir/src/Shader.cpp.s
+
+CMakeFiles/CubeWorld.dir/src/Window.cpp.o: CMakeFiles/CubeWorld.dir/flags.make
+CMakeFiles/CubeWorld.dir/src/Window.cpp.o: ../src/Window.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/christian/Desktop/CubeWorld/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/CubeWorld.dir/src/Window.cpp.o"
+	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CubeWorld.dir/src/Window.cpp.o -c /home/christian/Desktop/CubeWorld/src/Window.cpp
+
+CMakeFiles/CubeWorld.dir/src/Window.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CubeWorld.dir/src/Window.cpp.i"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/christian/Desktop/CubeWorld/src/Window.cpp > CMakeFiles/CubeWorld.dir/src/Window.cpp.i
+
+CMakeFiles/CubeWorld.dir/src/Window.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CubeWorld.dir/src/Window.cpp.s"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/christian/Desktop/CubeWorld/src/Window.cpp -o CMakeFiles/CubeWorld.dir/src/Window.cpp.s
+
+CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.o: CMakeFiles/CubeWorld.dir/flags.make
+CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.o: ../src/resource/ResourceManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/christian/Desktop/CubeWorld/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.o"
+	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.o -c /home/christian/Desktop/CubeWorld/src/resource/ResourceManager.cpp
+
+CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.i"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/christian/Desktop/CubeWorld/src/resource/ResourceManager.cpp > CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.i
+
+CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.s"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/christian/Desktop/CubeWorld/src/resource/ResourceManager.cpp -o CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.s
+
+CMakeFiles/CubeWorld.dir/src/util/Color.cpp.o: CMakeFiles/CubeWorld.dir/flags.make
+CMakeFiles/CubeWorld.dir/src/util/Color.cpp.o: ../src/util/Color.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/christian/Desktop/CubeWorld/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/CubeWorld.dir/src/util/Color.cpp.o"
+	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CubeWorld.dir/src/util/Color.cpp.o -c /home/christian/Desktop/CubeWorld/src/util/Color.cpp
+
+CMakeFiles/CubeWorld.dir/src/util/Color.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/CubeWorld.dir/src/util/Color.cpp.i"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/christian/Desktop/CubeWorld/src/util/Color.cpp > CMakeFiles/CubeWorld.dir/src/util/Color.cpp.i
+
+CMakeFiles/CubeWorld.dir/src/util/Color.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/CubeWorld.dir/src/util/Color.cpp.s"
+	/bin/x86_64-linux-gnu-g++-9 $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/christian/Desktop/CubeWorld/src/util/Color.cpp -o CMakeFiles/CubeWorld.dir/src/util/Color.cpp.s
+
 CMakeFiles/CubeWorld.dir/src/util/stb_image/stb_image.cpp.o: CMakeFiles/CubeWorld.dir/flags.make
 CMakeFiles/CubeWorld.dir/src/util/stb_image/stb_image.cpp.o: ../src/util/stb_image/stb_image.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/christian/Desktop/CubeWorld/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/CubeWorld.dir/src/util/stb_image/stb_image.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/christian/Desktop/CubeWorld/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/CubeWorld.dir/src/util/stb_image/stb_image.cpp.o"
 	/bin/x86_64-linux-gnu-g++-9  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/CubeWorld.dir/src/util/stb_image/stb_image.cpp.o -c /home/christian/Desktop/CubeWorld/src/util/stb_image/stb_image.cpp
 
 CMakeFiles/CubeWorld.dir/src/util/stb_image/stb_image.cpp.i: cmake_force
@@ -85,17 +163,29 @@ CMakeFiles/CubeWorld.dir/src/util/stb_image/stb_image.cpp.s: cmake_force
 
 # Object files for target CubeWorld
 CubeWorld_OBJECTS = \
+"CMakeFiles/CubeWorld.dir/src/Camera.cpp.o" \
 "CMakeFiles/CubeWorld.dir/src/Main.cpp.o" \
+"CMakeFiles/CubeWorld.dir/src/Mesh.cpp.o" \
+"CMakeFiles/CubeWorld.dir/src/Shader.cpp.o" \
+"CMakeFiles/CubeWorld.dir/src/Window.cpp.o" \
+"CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.o" \
+"CMakeFiles/CubeWorld.dir/src/util/Color.cpp.o" \
 "CMakeFiles/CubeWorld.dir/src/util/stb_image/stb_image.cpp.o"
 
 # External object files for target CubeWorld
 CubeWorld_EXTERNAL_OBJECTS =
 
+../bin/CubeWorld: CMakeFiles/CubeWorld.dir/src/Camera.cpp.o
 ../bin/CubeWorld: CMakeFiles/CubeWorld.dir/src/Main.cpp.o
+../bin/CubeWorld: CMakeFiles/CubeWorld.dir/src/Mesh.cpp.o
+../bin/CubeWorld: CMakeFiles/CubeWorld.dir/src/Shader.cpp.o
+../bin/CubeWorld: CMakeFiles/CubeWorld.dir/src/Window.cpp.o
+../bin/CubeWorld: CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.o
+../bin/CubeWorld: CMakeFiles/CubeWorld.dir/src/util/Color.cpp.o
 ../bin/CubeWorld: CMakeFiles/CubeWorld.dir/src/util/stb_image/stb_image.cpp.o
 ../bin/CubeWorld: CMakeFiles/CubeWorld.dir/build.make
 ../bin/CubeWorld: CMakeFiles/CubeWorld.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/christian/Desktop/CubeWorld/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable ../bin/CubeWorld"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/christian/Desktop/CubeWorld/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking CXX executable ../bin/CubeWorld"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/CubeWorld.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

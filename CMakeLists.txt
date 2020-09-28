@@ -9,6 +9,13 @@ file(GLOB SOURCES CONFIGURE_DEPENDS
 src/util/stb_image/stb_image.cpp
 
 src/Main.cpp
+src/Window.cpp
+src/util/Color.cpp
+src/Mesh.cpp
+src/Shader.cpp
+src/Camera.cpp
+
+src/resource/ResourceManager.cpp
 )
 
 # Set the include directory

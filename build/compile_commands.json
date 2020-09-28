@@ -1,8 +1,38 @@
 [
 {
   "directory": "/home/christian/Desktop/CubeWorld/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/christian/Desktop/CubeWorld/include  -g   -std=gnu++2a -o CMakeFiles/CubeWorld.dir/src/Camera.cpp.o -c /home/christian/Desktop/CubeWorld/src/Camera.cpp",
+  "file": "/home/christian/Desktop/CubeWorld/src/Camera.cpp"
+},
+{
+  "directory": "/home/christian/Desktop/CubeWorld/build",
   "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/christian/Desktop/CubeWorld/include  -g   -std=gnu++2a -o CMakeFiles/CubeWorld.dir/src/Main.cpp.o -c /home/christian/Desktop/CubeWorld/src/Main.cpp",
   "file": "/home/christian/Desktop/CubeWorld/src/Main.cpp"
+},
+{
+  "directory": "/home/christian/Desktop/CubeWorld/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/christian/Desktop/CubeWorld/include  -g   -std=gnu++2a -o CMakeFiles/CubeWorld.dir/src/Mesh.cpp.o -c /home/christian/Desktop/CubeWorld/src/Mesh.cpp",
+  "file": "/home/christian/Desktop/CubeWorld/src/Mesh.cpp"
+},
+{
+  "directory": "/home/christian/Desktop/CubeWorld/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/christian/Desktop/CubeWorld/include  -g   -std=gnu++2a -o CMakeFiles/CubeWorld.dir/src/Shader.cpp.o -c /home/christian/Desktop/CubeWorld/src/Shader.cpp",
+  "file": "/home/christian/Desktop/CubeWorld/src/Shader.cpp"
+},
+{
+  "directory": "/home/christian/Desktop/CubeWorld/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/christian/Desktop/CubeWorld/include  -g   -std=gnu++2a -o CMakeFiles/CubeWorld.dir/src/Window.cpp.o -c /home/christian/Desktop/CubeWorld/src/Window.cpp",
+  "file": "/home/christian/Desktop/CubeWorld/src/Window.cpp"
+},
+{
+  "directory": "/home/christian/Desktop/CubeWorld/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/christian/Desktop/CubeWorld/include  -g   -std=gnu++2a -o CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.o -c /home/christian/Desktop/CubeWorld/src/resource/ResourceManager.cpp",
+  "file": "/home/christian/Desktop/CubeWorld/src/resource/ResourceManager.cpp"
+},
+{
+  "directory": "/home/christian/Desktop/CubeWorld/build",
+  "command": "/bin/x86_64-linux-gnu-g++-9   -I/home/christian/Desktop/CubeWorld/include  -g   -std=gnu++2a -o CMakeFiles/CubeWorld.dir/src/util/Color.cpp.o -c /home/christian/Desktop/CubeWorld/src/util/Color.cpp",
+  "file": "/home/christian/Desktop/CubeWorld/src/util/Color.cpp"
 },
 {
   "directory": "/home/christian/Desktop/CubeWorld/build",

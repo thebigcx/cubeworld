@@ -14,6 +14,6 @@ cd ..
 mkdir bin/res
 mkdir bin/shaders
 cp res/* bin/res
-cp src/shaders/* bin/shaders
+cp shaders/* bin/shaders
 
 echo "Built target in ./bin/"

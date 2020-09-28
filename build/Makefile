@@ -124,6 +124,33 @@ CubeWorld/fast:
 	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/build
 .PHONY : CubeWorld/fast
 
+src/Camera.o: src/Camera.cpp.o
+
+.PHONY : src/Camera.o
+
+# target to build an object file
+src/Camera.cpp.o:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/Camera.cpp.o
+.PHONY : src/Camera.cpp.o
+
+src/Camera.i: src/Camera.cpp.i
+
+.PHONY : src/Camera.i
+
+# target to preprocess a source file
+src/Camera.cpp.i:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/Camera.cpp.i
+.PHONY : src/Camera.cpp.i
+
+src/Camera.s: src/Camera.cpp.s
+
+.PHONY : src/Camera.s
+
+# target to generate assembly for a file
+src/Camera.cpp.s:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/Camera.cpp.s
+.PHONY : src/Camera.cpp.s
+
 src/Main.o: src/Main.cpp.o
 
 .PHONY : src/Main.o
@@ -150,6 +177,141 @@ src/Main.s: src/Main.cpp.s
 src/Main.cpp.s:
 	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/Main.cpp.s
 .PHONY : src/Main.cpp.s
+
+src/Mesh.o: src/Mesh.cpp.o
+
+.PHONY : src/Mesh.o
+
+# target to build an object file
+src/Mesh.cpp.o:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/Mesh.cpp.o
+.PHONY : src/Mesh.cpp.o
+
+src/Mesh.i: src/Mesh.cpp.i
+
+.PHONY : src/Mesh.i
+
+# target to preprocess a source file
+src/Mesh.cpp.i:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/Mesh.cpp.i
+.PHONY : src/Mesh.cpp.i
+
+src/Mesh.s: src/Mesh.cpp.s
+
+.PHONY : src/Mesh.s
+
+# target to generate assembly for a file
+src/Mesh.cpp.s:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/Mesh.cpp.s
+.PHONY : src/Mesh.cpp.s
+
+src/Shader.o: src/Shader.cpp.o
+
+.PHONY : src/Shader.o
+
+# target to build an object file
+src/Shader.cpp.o:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/Shader.cpp.o
+.PHONY : src/Shader.cpp.o
+
+src/Shader.i: src/Shader.cpp.i
+
+.PHONY : src/Shader.i
+
+# target to preprocess a source file
+src/Shader.cpp.i:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/Shader.cpp.i
+.PHONY : src/Shader.cpp.i
+
+src/Shader.s: src/Shader.cpp.s
+
+.PHONY : src/Shader.s
+
+# target to generate assembly for a file
+src/Shader.cpp.s:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/Shader.cpp.s
+.PHONY : src/Shader.cpp.s
+
+src/Window.o: src/Window.cpp.o
+
+.PHONY : src/Window.o
+
+# target to build an object file
+src/Window.cpp.o:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/Window.cpp.o
+.PHONY : src/Window.cpp.o
+
+src/Window.i: src/Window.cpp.i
+
+.PHONY : src/Window.i
+
+# target to preprocess a source file
+src/Window.cpp.i:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/Window.cpp.i
+.PHONY : src/Window.cpp.i
+
+src/Window.s: src/Window.cpp.s
+
+.PHONY : src/Window.s
+
+# target to generate assembly for a file
+src/Window.cpp.s:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/Window.cpp.s
+.PHONY : src/Window.cpp.s
+
+src/resource/ResourceManager.o: src/resource/ResourceManager.cpp.o
+
+.PHONY : src/resource/ResourceManager.o
+
+# target to build an object file
+src/resource/ResourceManager.cpp.o:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.o
+.PHONY : src/resource/ResourceManager.cpp.o
+
+src/resource/ResourceManager.i: src/resource/ResourceManager.cpp.i
+
+.PHONY : src/resource/ResourceManager.i
+
+# target to preprocess a source file
+src/resource/ResourceManager.cpp.i:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.i
+.PHONY : src/resource/ResourceManager.cpp.i
+
+src/resource/ResourceManager.s: src/resource/ResourceManager.cpp.s
+
+.PHONY : src/resource/ResourceManager.s
+
+# target to generate assembly for a file
+src/resource/ResourceManager.cpp.s:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/resource/ResourceManager.cpp.s
+.PHONY : src/resource/ResourceManager.cpp.s
+
+src/util/Color.o: src/util/Color.cpp.o
+
+.PHONY : src/util/Color.o
+
+# target to build an object file
+src/util/Color.cpp.o:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/util/Color.cpp.o
+.PHONY : src/util/Color.cpp.o
+
+src/util/Color.i: src/util/Color.cpp.i
+
+.PHONY : src/util/Color.i
+
+# target to preprocess a source file
+src/util/Color.cpp.i:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/util/Color.cpp.i
+.PHONY : src/util/Color.cpp.i
+
+src/util/Color.s: src/util/Color.cpp.s
+
+.PHONY : src/util/Color.s
+
+# target to generate assembly for a file
+src/util/Color.cpp.s:
+	$(MAKE) -f CMakeFiles/CubeWorld.dir/build.make CMakeFiles/CubeWorld.dir/src/util/Color.cpp.s
+.PHONY : src/util/Color.cpp.s
 
 src/util/stb_image/stb_image.o: src/util/stb_image/stb_image.cpp.o
 
@@ -187,9 +349,27 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... CubeWorld"
+	@echo "... src/Camera.o"
+	@echo "... src/Camera.i"
+	@echo "... src/Camera.s"
 	@echo "... src/Main.o"
 	@echo "... src/Main.i"
 	@echo "... src/Main.s"
+	@echo "... src/Mesh.o"
+	@echo "... src/Mesh.i"
+	@echo "... src/Mesh.s"
+	@echo "... src/Shader.o"
+	@echo "... src/Shader.i"
+	@echo "... src/Shader.s"
+	@echo "... src/Window.o"
+	@echo "... src/Window.i"
+	@echo "... src/Window.s"
+	@echo "... src/resource/ResourceManager.o"
+	@echo "... src/resource/ResourceManager.i"
+	@echo "... src/resource/ResourceManager.s"
+	@echo "... src/util/Color.o"
+	@echo "... src/util/Color.i"
+	@echo "... src/util/Color.s"
 	@echo "... src/util/stb_image/stb_image.o"
 	@echo "... src/util/stb_image/stb_image.i"
 	@echo "... src/util/stb_image/stb_image.s"
