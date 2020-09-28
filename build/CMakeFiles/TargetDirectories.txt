@@ -1,3 +1,0 @@
-/home/christian/Desktop/CubeWorld/build/CMakeFiles/rebuild_cache.dir
-/home/christian/Desktop/CubeWorld/build/CMakeFiles/edit_cache.dir
-/home/christian/Desktop/CubeWorld/build/CMakeFiles/CubeWorld.dir
