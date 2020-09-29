@@ -27,11 +27,11 @@ bool Texture::loadFile(std::string p_file)
     {
         glTexImage2D(GL_TEXTURE_2D,      // Type of texture
                      0,                  // Level of detail (0 default)
-                     GL_RGB,             // Format of texture
+                     GL_RGBA,            // Format of texture
                      image.getSize().x,  // Height
                      image.getSize().y,  // Width
                      0,                  // Border (must be 0)
-                     GL_RGB,             // Format of image
+                     GL_RGBA,            // Format of image
                      GL_UNSIGNED_BYTE,   // Type of pixel data (uint8_t)
                      image.getPixels()); // Pixel data
 

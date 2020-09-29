@@ -16,24 +16,37 @@ int main(int args, char** argsv)
     ResourceManager::addShader("shader", Shader("shaders/shader.vert", "shaders/shader.frag"));
     ResourceManager::getShader("shader").use();
 
-    glm::mat4 projection = glm::perspective(glm::radians(45.f), 1920.f/1080.f, 0.1f, 100.f);
+    float windowWidth = (float)window.getSize().x;
+    float windowHeight = (float)window.getSize().y;
+    float aspect = windowWidth / windowHeight;
+    float fov = glm::radians(45.f);
+    float nearPlane = 0.1f;
+    float farPlane = 100.f;
+
+    glm::mat4 projection = glm::perspective(fov, aspect, nearPlane, farPlane);
 
     ResourceManager::getShader("shader").setUniform("projection", projection);
+
+    Texture texture;
+    texture.loadFile("res/terrain.png");
+    ResourceManager::addTexture("terrainAtlas", texture);
 
     Mesh mesh;
     std::array<Vector3f, 4> positions = {
         Vector3f( 0.5f,  0.5f, 0.5f),
-        Vector3f( 0.5f, -0.5f, 0.5f),
+        Vector3f(-0.5f,  0.5f, 0.5f),
         Vector3f(-0.5f, -0.5f, 0.5f),
-        Vector3f(-0.5f,  0.5f, 0.5f)
+        Vector3f( 0.5f, -0.5f, 0.5f),
     };
 
-    mesh.addFace(positions, TextureAtlas::getTexture(Vector2f(8, 15)));
+    mesh.addFace(positions, TextureAtlas::getTexture(Vector2f(3, 0)));
     mesh.update();
 
     Camera camera;
 
     glEnable(GL_DEPTH_TEST);
+    glEnable(GL_CULL_FACE);
+    glCullFace(GL_BACK);
 
     while (window.isOpen())
     {

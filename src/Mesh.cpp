@@ -4,8 +4,6 @@ Mesh::Mesh()
 {
     ResourceManager::getShader("shader").use();
 
-    m_texture.loadFile("res/terrain.jpeg");
-
     model = glm::mat4(1.f);
 
     glGenVertexArrays(1, &m_array);
@@ -56,7 +54,7 @@ void Mesh::addFace(std::array<Vector3f, 4> p_positions, std::array<Vector2f, 4> 
     positions.insert(positions.end(), p_positions.begin(), p_positions.end());
     texCoords.insert(texCoords.end(), p_texCoords.begin(), p_texCoords.end());
 
-    int indexArr[] = {0, 1, 3, 1, 2, 3};
+    int indexArr[] = {0, 1, 2, 0, 2, 3};
     indices.insert(indices.end(), std::begin(indexArr), std::end(indexArr));
 }
 
@@ -64,8 +62,12 @@ void Mesh::render()
 {
     ResourceManager::getShader("shader").use();
     ResourceManager::getShader("shader").setUniform("model", model);
-    m_texture.bind();
+
+    ResourceManager::getTexture("terrainAtlas").bind();
+
     glBindVertexArray(m_array);
+
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_elementBuffer);
+    
     glDrawElements(GL_TRIANGLES, vertexCount, GL_UNSIGNED_INT, 0);
 }

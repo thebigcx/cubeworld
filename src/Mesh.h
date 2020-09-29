@@ -33,6 +33,4 @@ class Mesh
         std::vector<Vector3f> positions;
         std::vector<Vector2f> texCoords;
         std::vector<int> indices;
-
-        Texture m_texture;
 };

@@ -7,6 +7,7 @@ Window::Window(int p_width, int p_height, std::string p_title)
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    //glfwWindowHint(GLFW_SAMPLES, 8);
 
     m_window = glfwCreateWindow(p_width, p_height, p_title.c_str(), nullptr, nullptr);
 
@@ -29,6 +30,8 @@ Window::Window(int p_width, int p_height, std::string p_title)
     glfwMakeContextCurrent(m_window);
 
     glewInit();
+
+    //glEnable(GL_MULTISAMPLE);
 }
 
 Window::~Window()
