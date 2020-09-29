@@ -7,10 +7,10 @@
 #include <vector>
 #include <array>
 
-#include "Shader.h"
-#include "Texture.h"
+#include "shader/Shader.h"
+#include "texture/Texture.h"
 #include "resource/ResourceManager.h"
-#include "util/Vector3.h"
+#include "util/math/Vector3.h"
 
 class Mesh
 {

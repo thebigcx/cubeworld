@@ -12,10 +12,11 @@ src/Main.cpp
 src/Window.cpp
 src/util/Color.cpp
 src/Mesh.cpp
-src/Shader.cpp
+src/shader/Shader.cpp
 src/Camera.cpp
-src/Texture.cpp
+src/texture/Texture.cpp
 src/Image.cpp
+src/world/Chunk.cpp
 
 src/resource/ResourceManager.cpp
 )

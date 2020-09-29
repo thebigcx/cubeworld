@@ -6,7 +6,7 @@
 #include <string>
 
 #include "util/Color.h"
-#include "util/Vector2.h"
+#include "util/math/Vector2.h"
 
 class Window
 {

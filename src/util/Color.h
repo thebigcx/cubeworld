@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-#include "Math.h"
+#include "math/Math.h"
 
 class Color {
 	public:

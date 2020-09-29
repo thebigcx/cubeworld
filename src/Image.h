@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include "util/Vector2.h"
+#include "util/math/Vector2.h"
 
 class Image {
     public:

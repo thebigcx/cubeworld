@@ -3,9 +3,10 @@
 
 #include "Window.h"
 #include "Mesh.h"
-#include "Shader.h"
+#include "shader/Shader.h"
 #include "Camera.h"
-#include "TextureAtlas.h"
+#include "world/Chunk.h"
+#include "texture/TextureAtlas.h"
 
 #include "resource/ResourceManager.h"
 
@@ -31,16 +32,7 @@ int main(int args, char** argsv)
     texture.loadFile("res/terrain.png");
     ResourceManager::addTexture("terrainAtlas", texture);
 
-    Mesh mesh;
-    std::array<Vector3f, 4> positions = {
-        Vector3f( 0.5f,  0.5f, 0.5f),
-        Vector3f(-0.5f,  0.5f, 0.5f),
-        Vector3f(-0.5f, -0.5f, 0.5f),
-        Vector3f( 0.5f, -0.5f, 0.5f),
-    };
-
-    mesh.addFace(positions, TextureAtlas::getTexture(Vector2f(3, 0)));
-    mesh.update();
+    Chunk chunk(Vector2i(0, 0));
 
     Camera camera;
 
@@ -59,13 +51,11 @@ int main(int args, char** argsv)
 
         window.clear();
 
-        
-
         camera.processInput(window);
 
         camera.update();
 
-        mesh.render();
+        chunk.render();
 
         window.display();
     }

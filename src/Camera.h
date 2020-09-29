@@ -3,7 +3,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "util/Vector3.h"
+#include "util/math/Vector3.h"
 
 #include "Window.h"
 
