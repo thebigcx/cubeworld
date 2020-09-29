@@ -4,8 +4,13 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
+#include <vector>
+#include <array>
+
 #include "Shader.h"
+#include "Texture.h"
 #include "resource/ResourceManager.h"
+#include "util/Vector3.h"
 
 class Mesh
 {
@@ -14,22 +19,20 @@ class Mesh
 
         void render();
 
+        void update();
+
+        void addFace(std::array<Vector3f, 4> p_positions, std::array<Vector2f, 4> p_texCoords);
+
         glm::mat4 model;
         
+        int vertexCount = 0;
 
     private:
-        unsigned int m_array;
-        unsigned int m_elementBuffer;
+        unsigned int m_array, m_elementBuffer, m_posBuffer, m_texCoordBuffer;
 
-        static const inline float vertices[] = {
-            0.5f,  0.5f, 0.0f,  // top right
-            0.5f, -0.5f, 0.0f,  // bottom right
-            -0.5f, -0.5f, 0.0f,  // bottom left
-            -0.5f,  0.5f, 0.0f   // top left 
-        };
+        std::vector<Vector3f> positions;
+        std::vector<Vector2f> texCoords;
+        std::vector<int> indices;
 
-        static const inline unsigned int indices[] = {  // note that we start from 0!
-            0, 1, 3,   // first triangle
-            1, 2, 3    // second triangle
-        };
+        Texture m_texture;
 };

@@ -34,11 +34,12 @@ void Camera::processInput(Window& p_window)
     const float speed = 0.05f;
     if (p_window.isKeyPressed(GLFW_KEY_W))
     {
-        m_position += speed * glm::vec3(m_direction.x, 0, m_direction.z);
+        //m_position += speed * glm::vec3(m_direction.x, 0, m_direction.z);
+        m_position += speed * glm::vec3(cos(glm::radians(m_pan)), 0, sin(glm::radians(m_pan)));
     }
     if (p_window.isKeyPressed(GLFW_KEY_S))
     {
-        m_position -= speed * glm::vec3(m_direction.x, 0, m_direction.z);
+        m_position -= speed * glm::vec3(cos(glm::radians(m_pan)), 0, sin(glm::radians(m_pan)));
     }
     if (p_window.isKeyPressed(GLFW_KEY_A))
     {
@@ -47,6 +48,14 @@ void Camera::processInput(Window& p_window)
     if (p_window.isKeyPressed(GLFW_KEY_D))
     {
         m_position += glm::normalize(glm::cross(m_direction, m_up)) * speed;
+    }
+    if (p_window.isKeyPressed(GLFW_KEY_SPACE))
+    {
+        m_position += speed * glm::vec3(0, 1, 0);
+    }
+    if (p_window.isKeyPressed(GLFW_KEY_LEFT_SHIFT))
+    {
+        m_position -= speed * glm::vec3(0, 1, 0);
     }
 
     Vector2d mousePos = p_window.getMousePosition();

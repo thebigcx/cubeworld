@@ -14,6 +14,8 @@ src/util/Color.cpp
 src/Mesh.cpp
 src/Shader.cpp
 src/Camera.cpp
+src/Texture.cpp
+src/Image.cpp
 
 src/resource/ResourceManager.cpp
 )
