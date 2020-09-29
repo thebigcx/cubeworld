@@ -16,7 +16,7 @@ Mesh::Mesh()
     //------------------------------------------------------------------------//
 
     glBindBuffer(GL_ARRAY_BUFFER, m_posBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * positions.size()*3, &positions[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * m_positions.size()*3, &m_positions[0], GL_STATIC_DRAW);
 
     glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(0);
@@ -24,7 +24,7 @@ Mesh::Mesh()
     //------------------------------------------------------------------------//
 
     glBindBuffer(GL_ARRAY_BUFFER, m_texCoordBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * texCoords.size()*2, &texCoords[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * m_texCoords.size()*2, &m_texCoords[0], GL_STATIC_DRAW);
 
     glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), (void*)0);
     glEnableVertexAttribArray(1);
@@ -32,30 +32,48 @@ Mesh::Mesh()
     //------------------------------------------------------------------------//
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_elementBuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * indices.size(), &indices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * m_indices.size(), &m_indices[0], GL_STATIC_DRAW);
 
     vertexCount = 6;
 }
 
 void Mesh::update()
 {
+    vertexCount = m_indices.size();
+
     glBindBuffer(GL_ARRAY_BUFFER, m_posBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * positions.size() * 3, &positions[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * m_positions.size() * 3, &m_positions[0], GL_STATIC_DRAW);
 
     glBindBuffer(GL_ARRAY_BUFFER, m_texCoordBuffer);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * texCoords.size() * 3, &texCoords[0], GL_STATIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(float) * m_texCoords.size() * 2, &m_texCoords[0], GL_STATIC_DRAW);
 
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_elementBuffer);
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * indices.size(), &indices[0], GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * m_indices.size(), &m_indices[0], GL_STATIC_DRAW);
 }
 
-void Mesh::addFace(std::array<Vector3f, 4> p_positions, std::array<Vector2f, 4> p_texCoords)
+void Mesh::addFace(std::array<Vector3f, 4> p_positions, std::array<Vector2f, 4> p_texCoords, Vector3i p_blockPosition)
 {
-    positions.insert(positions.end(), p_positions.begin(), p_positions.end());
-    texCoords.insert(texCoords.end(), p_texCoords.begin(), p_texCoords.end());
+    int off = m_positions.size();
+    int indexArr[] = {
+        0 + off, 1 + off, 2 + off, 
+        0 + off, 2 + off, 3 + off
+    };
 
-    int indexArr[] = {0, 1, 2, 0, 2, 3};
-    indices.insert(indices.end(), std::begin(indexArr), std::end(indexArr));
+    m_indices.insert(m_indices.end(), std::begin(indexArr), std::end(indexArr));
+
+    // Add the block position to the vertices
+    std::array<Vector3f, 4> positions;
+    for (int i = 0 ; i < p_positions.size() ; i++)
+    {
+        positions[i].x = p_positions[i].x + p_blockPosition.x;
+        positions[i].y = p_positions[i].y + p_blockPosition.y;
+        positions[i].z = p_positions[i].z + p_blockPosition.z;
+    }
+
+    m_positions.insert(m_positions.end(), positions.begin(), positions.end());
+    m_texCoords.insert(m_texCoords.end(), p_texCoords.begin(), p_texCoords.end());
+
+    
 }
 
 void Mesh::render()

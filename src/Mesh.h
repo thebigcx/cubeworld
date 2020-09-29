@@ -21,7 +21,7 @@ class Mesh
 
         void update();
 
-        void addFace(std::array<Vector3f, 4> p_positions, std::array<Vector2f, 4> p_texCoords);
+        void addFace(std::array<Vector3f, 4> p_positions, std::array<Vector2f, 4> p_texCoords, Vector3i p_blockPosition);
 
         glm::mat4 model;
         
@@ -30,7 +30,7 @@ class Mesh
     private:
         unsigned int m_array, m_elementBuffer, m_posBuffer, m_texCoordBuffer;
 
-        std::vector<Vector3f> positions;
-        std::vector<Vector2f> texCoords;
-        std::vector<int> indices;
+        std::vector<Vector3f> m_positions;
+        std::vector<Vector2f> m_texCoords;
+        std::vector<int> m_indices;
 };
