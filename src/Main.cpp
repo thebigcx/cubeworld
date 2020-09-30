@@ -5,7 +5,7 @@
 #include "Mesh.h"
 #include "shader/Shader.h"
 #include "Camera.h"
-#include "world/Chunk.h"
+#include "world/chunk/Chunk.h"
 #include "texture/TextureAtlas.h"
 
 #include "resource/ResourceManager.h"

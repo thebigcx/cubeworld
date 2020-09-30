@@ -17,11 +17,8 @@ class Vector2 {
 
 		Vector2& operator =(const Vector2& p_other) noexcept
 		{
-			if (x != p_other.x && y != p_other.y)
-			{
-				x = p_other.x;
-				y = p_other.y;
-			}
+			x = p_other.x;
+			y = p_other.y;
 
 			return *this;
 		}
@@ -33,6 +30,12 @@ class Vector2 {
 			vec.y = y + p_other.y;
 
 			return vec;
+		}
+
+		void operator +=(const Vector2& p_other) noexcept
+		{
+			x += p_other.x;
+			y += p_other.y;
 		}
 
 		T x, y;

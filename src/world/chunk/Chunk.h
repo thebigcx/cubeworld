@@ -2,9 +2,9 @@
 
 #include <array>
 
-#include "Block.h"
-#include "../Mesh.h"
-#include "../util/math/Vector2.h"
+#include "../block/BlockType.h"
+#include "../../Mesh.h"
+#include "../../util/math/Vector2.h"
 
 constexpr int CHUNK_WIDTH = 16;
 constexpr int CHUNK_HEIGHT = 256;
@@ -18,8 +18,10 @@ class Chunk
 
         void render();
 
+        int getIndex(int x, int y, int z);
+
     private:
-        std::array<Block, CHUNK_BLOCK_COUNT> m_blocks;
+        std::array<BlockType, CHUNK_BLOCK_COUNT> m_blocks;
         
         Vector2i m_position;
 

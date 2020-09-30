@@ -16,7 +16,9 @@ src/shader/Shader.cpp
 src/Camera.cpp
 src/texture/Texture.cpp
 src/Image.cpp
-src/world/Chunk.cpp
+src/world/chunk/Chunk.cpp
+
+src/world/block/Block.cpp
 
 src/resource/ResourceManager.cpp
 )
