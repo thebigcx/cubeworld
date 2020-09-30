@@ -17,6 +17,7 @@ src/Camera.cpp
 src/texture/Texture.cpp
 src/Image.cpp
 src/world/chunk/Chunk.cpp
+src/world/chunk/ChunkMeshBuilder.cpp
 
 src/world/block/Block.cpp
 

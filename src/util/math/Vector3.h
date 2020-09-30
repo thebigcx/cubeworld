@@ -19,12 +19,9 @@ class Vector3 {
 
 		Vector3& operator =(const Vector3& p_other) noexcept
 		{
-			if (x != p_other.x && y != p_other.y && z != p_other.z)
-			{
-				x = p_other.x;
-				y = p_other.y;
-				z = p_other.z;
-			}
+			x = p_other.x;
+			y = p_other.y;
+			z = p_other.z;
 
 			return *this;
 		}

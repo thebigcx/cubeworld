@@ -20,6 +20,12 @@ class Chunk
 
         int getIndex(int x, int y, int z);
 
+        BlockType getBlock(int x, int y, int z);
+        
+        std::array<BlockType, CHUNK_BLOCK_COUNT> getBlocks();
+
+        friend class ChunkMeshBuilder;
+
     private:
         std::array<BlockType, CHUNK_BLOCK_COUNT> m_blocks;
         

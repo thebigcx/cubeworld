@@ -30,7 +30,7 @@ class Camera
         glm::mat4 m_viewMatrix;
         glm::mat4 m_projectionMatrix;
 
-        glm::vec3 m_position = glm::vec3(0.f, 0.f, 3.f);
+        glm::vec3 m_position = glm::vec3(0.f, 0.f, 0.f);
         glm::vec3 m_direction = glm::vec3(0.f, 0.f, -1.f);
         glm::vec3 m_up = glm::vec3(0.f, 1.f, 0.f);
 
@@ -39,4 +39,5 @@ class Camera
         float m_pan, m_tilt;
 
         float m_sensitivity = 0.1f;
+        const float m_speed = 0.5f;
 };

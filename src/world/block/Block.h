@@ -12,5 +12,5 @@ class Block
         Vector2i texCoordTop;
         Vector2i texCoordBottom;
 
-        Block(Vector2i side, Vector2i top, Vector2i bottom);
+        Block(Vector2i side, Vector2i top, Vector2i bottom, bool collidable, bool transparent);
 };

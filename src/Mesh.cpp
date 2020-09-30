@@ -34,6 +34,8 @@ void Mesh::update()
 {
     vertexCount = m_indices.size();
 
+    // Send the updated data to the GPU
+
     glBindBuffer(GL_ARRAY_BUFFER, m_posBuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(float) * m_positions.size() * 3, &m_positions[0], GL_STATIC_DRAW);
 
@@ -81,4 +83,9 @@ void Mesh::render()
     glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_elementBuffer);
     
     glDrawElements(GL_TRIANGLES, vertexCount, GL_UNSIGNED_INT, 0);
+}
+
+void Mesh::setPosition(Vector3f p_pos)
+{
+    model = glm::translate(glm::mat4(1.f), glm::vec3(p_pos.x, p_pos.y, p_pos.z));
 }

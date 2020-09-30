@@ -31,31 +31,31 @@ Camera& Camera::move(Vector3f p_dir)
 
 void Camera::processInput(Window& p_window)
 {
-    const float speed = 0.05f;
+    // Use some trigonometry to determine which way the camera should move
+    // following different key presses
     if (p_window.isKeyPressed(GLFW_KEY_W))
     {
-        //m_position += speed * glm::vec3(m_direction.x, 0, m_direction.z);
-        m_position += speed * glm::vec3(cos(glm::radians(m_pan)), 0, sin(glm::radians(m_pan)));
+        m_position += m_speed * glm::vec3(cos(glm::radians(m_pan)), 0, sin(glm::radians(m_pan)));
     }
     if (p_window.isKeyPressed(GLFW_KEY_S))
     {
-        m_position -= speed * glm::vec3(cos(glm::radians(m_pan)), 0, sin(glm::radians(m_pan)));
+        m_position -= m_speed * glm::vec3(cos(glm::radians(m_pan)), 0, sin(glm::radians(m_pan)));
     }
     if (p_window.isKeyPressed(GLFW_KEY_A))
     {
-        m_position -= glm::normalize(glm::cross(m_direction, m_up)) * speed;
+        m_position -= m_speed * glm::normalize(glm::cross(m_direction, m_up));
     }
     if (p_window.isKeyPressed(GLFW_KEY_D))
     {
-        m_position += glm::normalize(glm::cross(m_direction, m_up)) * speed;
+        m_position += m_speed * glm::normalize(glm::cross(m_direction, m_up));
     }
     if (p_window.isKeyPressed(GLFW_KEY_SPACE))
     {
-        m_position += speed * glm::vec3(0, 1, 0);
+        m_position += m_speed * glm::vec3(0, 1, 0);
     }
     if (p_window.isKeyPressed(GLFW_KEY_LEFT_SHIFT))
     {
-        m_position -= speed * glm::vec3(0, 1, 0);
+        m_position -= m_speed * glm::vec3(0, 1, 0);
     }
 
     Vector2d mousePos = p_window.getMousePosition();

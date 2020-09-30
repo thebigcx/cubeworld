@@ -22,9 +22,9 @@ int main(int args, char** argsv)
     float aspect = windowWidth / windowHeight;
     float fov = glm::radians(45.f);
     float nearPlane = 0.1f;
-    float farPlane = 100.f;
+    float renderDistance = 300.f;
 
-    glm::mat4 projection = glm::perspective(fov, aspect, nearPlane, farPlane);
+    glm::mat4 projection = glm::perspective(fov, aspect, nearPlane, renderDistance);
 
     ResourceManager::getShader("shader").setUniform("projection", projection);
 
@@ -33,6 +33,7 @@ int main(int args, char** argsv)
     ResourceManager::addTexture("terrainAtlas", texture);
 
     Chunk chunk(Vector2i(0, 0));
+    Chunk chunk1(Vector2i(1, 0));
 
     Camera camera;
 
@@ -56,6 +57,7 @@ int main(int args, char** argsv)
         camera.update();
 
         chunk.render();
+        chunk1.render();
 
         window.display();
     }
