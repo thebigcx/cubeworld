@@ -15,6 +15,10 @@ Mesh ChunkMeshBuilder::buildChunkMesh(Chunk& p_chunk)
             for (int z = 0 ; z < CHUNK_WIDTH ; z++)
             {
                 auto block = BlockManager::getBlockData(p_chunk.getBlock(x, y, z));
+                if (block.transparent)
+                {
+                    continue; // Discard a transparent block's faces
+                }
                 auto sideCoords = TextureAtlas::getTexture(block.texCoordSide);
                 Vector3i pos(x, y, z);
 
@@ -59,11 +63,17 @@ Mesh ChunkMeshBuilder::buildChunkMesh(Chunk& p_chunk)
 
 bool ChunkMeshBuilder::shouldBuildFace(Chunk& p_chunk, Vector3i normal, Vector3i pos)
 {
-    Vector3i adjacent = pos + normal;
+    Vector3i adj = pos + normal;
 
-    if (adjacent.x < 0 || adjacent.x >= CHUNK_WIDTH
-     || adjacent.y < 0 || adjacent.y >= CHUNK_HEIGHT
-     || adjacent.z < 0 || adjacent.z >= CHUNK_WIDTH)
+    if (adj.x < 0 || adj.x >= CHUNK_WIDTH
+     || adj.y < 0 || adj.y >= CHUNK_HEIGHT
+     || adj.z < 0 || adj.z >= CHUNK_WIDTH)
+    {
+        return true;
+    }
+
+    
+    if (p_chunk.getBlock(adj.x, adj.y, adj.z).getId() == BlockType::Air)
     {
         return true;
     }

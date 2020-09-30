@@ -6,6 +6,7 @@ class BlockType
 
         enum
         {
+            Air,
             Grass,
             Stone,
             Dirt
@@ -19,6 +20,11 @@ class BlockType
         BlockType(int id)
         {
             this->id = id;
+        }
+
+        void setType(int type)
+        {
+            this->id = type;
         }
 
         int getId()

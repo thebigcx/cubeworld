@@ -18,7 +18,7 @@ class Chunk
 
         void render();
 
-        int getIndex(int x, int y, int z);
+        static int getIndex(int x, int y, int z);
 
         BlockType getBlock(int x, int y, int z);
         

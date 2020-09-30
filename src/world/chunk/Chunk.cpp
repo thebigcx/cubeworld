@@ -4,12 +4,16 @@
 #include "../block/BlockVertices.h"
 #include "../block/BlockManager.h"
 #include "../../util/math/Vector3.h"
+#include "../terrain/TerrainGenerator.h"
 #include "ChunkMeshBuilder.h"
 
 Chunk::Chunk(Vector2i p_position)
 : m_position(p_position)
 {
+    m_blocks = TerrainGenerator::generateChunk(p_position.x, p_position.y);
     m_mesh = ChunkMeshBuilder::buildChunkMesh(*this);
+    
+    
 
     m_mesh.setPosition(Vector3f(p_position.x * 16, 0, p_position.y * 16));
 }

@@ -11,6 +11,7 @@ struct BlockManager
 
         // TODO:  Refactor, maybe use JSONs or external binary files
         static inline const std::map<int, Block> blocks = {
+            { BlockType::Air, Block(Vector2i(0, 0), Vector2i(0, 0), Vector2i(0, 0), false, true) },
             { BlockType::Grass, Block(Vector2i(3, 0), Vector2i(0, 0), Vector2i(2, 0), true, false) }
         };
 
