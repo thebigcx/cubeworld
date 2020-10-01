@@ -6,7 +6,7 @@
 class Skybox
 {
     public:
-        Skybox(std::vector<std::string> p_faces);
+        Skybox();
 
         void render();
 

@@ -10,7 +10,7 @@
 class Camera
 {
     public:
-        Camera();
+        Camera(Window& p_window);
 
         Camera& setPosition(Vector3f p_position)
         {
@@ -29,6 +29,21 @@ class Camera
         glm::mat4 getViewMatrix()
         {
             return m_viewMatrix;
+        }
+
+        glm::mat4 getProjectionMatrix()
+        {
+            return m_projectionMatrix;
+        }
+
+        Vector3f getPosition()
+        {
+            return Vector3f(m_position.x, m_position.y, m_position.z);
+        }
+
+        Vector3f getDirection()
+        {
+            return Vector3f(m_direction.x, m_direction.y, m_direction.z);
         }
 
     private:

@@ -25,6 +25,8 @@ class Window
 
         bool isKeyPressed(int p_key);
 
+        bool isMouseClicked(int p_button);
+
         Vector2d getMousePosition();
 
         void close();

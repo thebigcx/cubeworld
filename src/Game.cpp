@@ -6,7 +6,7 @@
 #include "Window.h"
 #include "Mesh.h"
 #include "shader/Shader.h"
-#include "player/Camera.h"
+#include "player/Player.h"
 #include "world/chunk/Chunk.h"
 #include "texture/TextureAtlas.h"
 #include "world/World.h"
@@ -26,37 +26,13 @@ void Game::run()
     ResourceManager::addShader("shader", Shader("shaders/basic.vert", "shaders/basic.frag"));
     ResourceManager::addShader("skybox", Shader("shaders/skybox.vert", "shaders/skybox.frag"));
 
-    ResourceManager::getShader("shader").use();
-
-    float windowWidth = (float)window.getSize().x;
-    float windowHeight = (float)window.getSize().y;
-    float aspect = windowWidth / windowHeight;
-    float fov = glm::radians(45.f);
-    float nearPlane = 0.1f;
-    float renderDistance = 3000.f;
-
-    glm::mat4 projection = glm::perspective(fov, aspect, nearPlane, renderDistance);
-
-    ResourceManager::getShader("shader").setUniform("projection", projection);
-
-    ResourceManager::getShader("skybox").use();
-    ResourceManager::getShader("skybox").setUniform("projection", projection);
-
     Texture texture;
     texture.loadFile("res/terrain.png");
     ResourceManager::addTexture("terrainAtlas", texture);
 
     Math::Random::initSeed();
 
-    std::vector<std::string> faces = {
-        "res/skybox.png",
-        "res/skybox.png",
-        "res/skybox.png",
-        "res/skybox.png",
-        "res/skybox.png",
-        "res/skybox.png"
-    };
-    Skybox skybox(faces);
+    Skybox skybox;
 
     World world;
     world.getChunk(0, 0).setBlock(Vector3i(0, 0, 0), BlockType::Grass);
@@ -66,7 +42,7 @@ void Game::run()
     }
     world.addChunkToUpdateList(0, 0);
 
-    Camera camera;
+    Player player(window, world);
 
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
@@ -83,16 +59,11 @@ void Game::run()
 
         window.clear();
 
-        camera.processInput(window);
-
-        camera.update();
+        player.handleInput(window);
+        player.update();
 
         world.update();
         world.render();
-
-        ResourceManager::getShader("skybox").use();
-        auto view = glm::mat4(glm::mat3(camera.getViewMatrix()));
-        ResourceManager::getShader("skybox").setUniform("view", view);
 
         skybox.render();
 

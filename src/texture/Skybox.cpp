@@ -5,7 +5,7 @@
 
 #include <GL/glew.h>
 
-Skybox::Skybox(std::vector<std::string> p_faces)
+Skybox::Skybox()
 {
     glGenTextures(1, &m_textureId);
     glBindTexture(GL_TEXTURE_CUBE_MAP, m_textureId);

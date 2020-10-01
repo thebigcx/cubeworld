@@ -66,6 +66,11 @@ bool Window::isKeyPressed(int p_key)
     return glfwGetKey(m_window, p_key);
 }
 
+bool Window::isMouseClicked(int p_button)
+{
+    return glfwGetMouseButton(m_window, p_button);
+}
+
 Vector2d Window::getMousePosition()
 {
     double xpos, ypos;

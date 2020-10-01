@@ -2,9 +2,24 @@
 
 #include "../resource/ResourceManager.h"
 
-Camera::Camera()
+Camera::Camera(Window& p_window)
 {
-    
+    // Create a projection matrix and store it in the shaders
+
+    float windowWidth = (float)p_window.getSize().x;
+    float windowHeight = (float)p_window.getSize().y;
+    float aspect = windowWidth / windowHeight;
+    float fov = glm::radians(45.f);
+    float nearPlane = 0.1f;
+    float renderDistance = 3000.f;
+
+    glm::mat4 m_projectionMatrix = glm::perspective(fov, aspect, nearPlane, renderDistance);
+
+    ResourceManager::getShader("shader").use();
+    ResourceManager::getShader("shader").setUniform("projection", m_projectionMatrix);
+
+    ResourceManager::getShader("skybox").use();
+    ResourceManager::getShader("skybox").setUniform("projection", m_projectionMatrix);
 }
 
 void Camera::update()
@@ -19,6 +34,9 @@ void Camera::update()
 
     ResourceManager::getShader("shader").use();
     ResourceManager::getShader("shader").setUniform("view", m_viewMatrix);
+
+    ResourceManager::getShader("skybox").use();
+    ResourceManager::getShader("skybox").setUniform("view", glm::mat3(m_viewMatrix));
 }
 
 Camera& Camera::move(Vector3f p_dir)
