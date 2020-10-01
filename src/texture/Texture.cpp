@@ -19,6 +19,7 @@ bool Texture::loadFile(std::string p_file)
     glBindTexture(GL_TEXTURE_2D, m_texture);
 
     Image image;
+    image.setVerticalFlip(true);
     image.loadFromFile(p_file);
 
     glPixelStorei(GL_UNPACK_ALIGNMENT, 1);

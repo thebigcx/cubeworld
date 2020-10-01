@@ -1,6 +1,6 @@
 #include "Camera.h"
 
-#include "resource/ResourceManager.h"
+#include "../resource/ResourceManager.h"
 
 Camera::Camera()
 {

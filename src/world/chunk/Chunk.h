@@ -7,7 +7,7 @@
 #include "../../util/math/Vector2.h"
 
 constexpr int CHUNK_WIDTH = 16;
-constexpr int CHUNK_HEIGHT = 256;
+constexpr int CHUNK_HEIGHT = 64;
 
 constexpr unsigned int CHUNK_BLOCK_COUNT = CHUNK_WIDTH * CHUNK_WIDTH * CHUNK_HEIGHT;
 
@@ -23,6 +23,15 @@ class Chunk
         BlockType getBlock(int x, int y, int z);
         
         std::array<BlockType, CHUNK_BLOCK_COUNT> getBlocks();
+
+        void setBlock(Vector3i pos, BlockType type);
+
+        Vector2i getPosition()
+        {
+            return m_position;
+        }
+        
+        void update();
 
         friend class ChunkMeshBuilder;
 

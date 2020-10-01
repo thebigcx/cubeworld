@@ -9,6 +9,12 @@ class World
 
         void render();
 
+        Chunk& getChunk(int x, int z);
+
+        void addChunkToUpdateList(int x, int z);
+
+        void update();
+
     private:
         ChunkManager m_chunkManager;
 };

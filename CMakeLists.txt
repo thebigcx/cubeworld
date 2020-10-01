@@ -14,7 +14,7 @@ src/Window.cpp
 src/util/Color.cpp
 src/Mesh.cpp
 src/shader/Shader.cpp
-src/Camera.cpp
+src/player/Camera.cpp
 src/texture/Texture.cpp
 src/Image.cpp
 src/world/chunk/Chunk.cpp
@@ -22,6 +22,7 @@ src/world/chunk/ChunkMeshBuilder.cpp
 src/world/chunk/ChunkManager.cpp
 src/world/World.cpp
 src/world/terrain/TerrainGenerator.cpp
+src/texture/Skybox.cpp
 
 src/world/block/Block.cpp
 

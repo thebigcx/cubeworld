@@ -3,9 +3,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "util/math/Vector3.h"
+#include "../util/math/Vector3.h"
 
-#include "Window.h"
+#include "../Window.h"
 
 class Camera
 {
@@ -25,6 +25,11 @@ class Camera
         void processInput(Window& p_window);
 
         Camera& move(Vector3f p_dir);
+
+        glm::mat4 getViewMatrix()
+        {
+            return m_viewMatrix;
+        }
 
     private:
         glm::mat4 m_viewMatrix;

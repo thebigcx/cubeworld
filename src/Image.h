@@ -9,6 +9,8 @@ class Image {
         Image();
         ~Image();
 
+        void setVerticalFlip(bool flip = true);
+
         void loadFromFile(std::string p_file);
 
         const unsigned char* getPixels() const;
@@ -19,4 +21,6 @@ class Image {
         unsigned char* m_data;
 
         Vector2u m_size;
+
+        bool m_flip = false;
 };

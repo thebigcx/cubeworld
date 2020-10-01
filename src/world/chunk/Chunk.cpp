@@ -25,7 +25,14 @@ void Chunk::render()
 
 int Chunk::getIndex(int x, int y, int z)
 {
-    return x * CHUNK_WIDTH + y * CHUNK_HEIGHT + z;
+    // Do some magic to find the index
+    return x + CHUNK_WIDTH * (y + CHUNK_HEIGHT * z);
+}
+
+void Chunk::setBlock(Vector3i pos, BlockType type)
+{
+    int index = getIndex(pos.x, pos.y, pos.z);
+    m_blocks[index].setType(type.getId());
 }
 
 std::array<BlockType, CHUNK_BLOCK_COUNT> Chunk::getBlocks()
@@ -36,4 +43,10 @@ std::array<BlockType, CHUNK_BLOCK_COUNT> Chunk::getBlocks()
 BlockType Chunk::getBlock(int x, int y, int z)
 {
     return m_blocks[getIndex(x, y, z)];
+}
+
+void Chunk::update()
+{
+    m_mesh = ChunkMeshBuilder::buildChunkMesh(*this);
+    m_mesh.setPosition(Vector3f(m_position.x * 16, 0, m_position.y * 16));
 }
