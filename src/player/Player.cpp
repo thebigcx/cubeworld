@@ -19,6 +19,10 @@ void Player::handleInput(Window& p_window)
     {
         m_mousePicker.checkBlockDestroy();
     }
+    if (p_window.isMouseClicked(GLFW_MOUSE_BUTTON_RIGHT))
+    {
+        m_mousePicker.checkBlockPlace();
+    }
 }
 
 void Player::update(World& p_world)

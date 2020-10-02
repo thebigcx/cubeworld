@@ -15,14 +15,9 @@ void MousePicker::checkBlockDestroy()
     for (int i = 0 ; i < 20 ; i++)
     {
         // Get the block coordinates
-        Vector3i rayPos = getSelectedBlock(ray, i/2);
+        Vector3i rayPos = getSelectedBlock(ray, i * 0.5f);
         Vector3i blockPos(rayPos.x % CHUNK_WIDTH, rayPos.y, rayPos.z % CHUNK_WIDTH);
         Vector2i chunkPos(floor(rayPos.x / CHUNK_WIDTH), floor(rayPos.z / CHUNK_WIDTH));
-
-        if (rayPos.x < 0 || rayPos.y < 0 || rayPos.y > CHUNK_HEIGHT || rayPos.z < 0)
-        {
-            continue;
-        }
         
         // Get the chunk in which the block resides
         auto& chunk = m_world->getChunk(chunkPos.x, chunkPos.y);
@@ -38,10 +33,41 @@ void MousePicker::checkBlockDestroy()
     }
 }
 
-/*void MousePicker::checkBlockPlace()
+void MousePicker::checkBlockPlace()
 {
+    Ray ray(m_camera->getPosition(), m_camera->getDirection());
 
-}*/
+    Vector3i previous = getSelectedBlock(ray, 0);
+
+    for (int i = 0 ; i < 20 ; i++)
+    {
+        // Get the position of the ray
+        Vector3i rayPos = getSelectedBlock(ray, i * 0.5f);
+
+        // Get the local chunk block coordinates
+        Vector3i blockPos(rayPos.x % CHUNK_WIDTH, rayPos.y, rayPos.z % CHUNK_WIDTH);
+
+        // Get the chunk coordinates
+        Vector2i chunkPos(floor(rayPos.x / CHUNK_WIDTH), floor(rayPos.z / CHUNK_WIDTH));
+        auto& chunk = m_world->getChunk(chunkPos.x, chunkPos.y);
+
+        // If the selected block is solid, allow a block to be placed on it
+        if (chunk.getBlock(blockPos.x, blockPos.y, blockPos.z) != BlockType::Air)
+        {
+            // Get the previous air block
+            Vector3i previousBlockPos(previous.x % CHUNK_WIDTH, previous.y, previous.z % CHUNK_WIDTH);
+            
+            // Set it to dirt (for now) and update the chunk's mesh
+            chunk.setBlock(previousBlockPos, BlockType::Dirt);
+            m_world->addChunkToUpdateList(chunk);
+            
+            break;
+        }
+
+        previous = rayPos;
+    }
+}
+
 
 Vector3i MousePicker::getSelectedBlock(Ray ray, int rayOffset)
 {

@@ -10,6 +10,7 @@ class MousePicker
         MousePicker(Camera& p_cam, World& p_world);
 
         void checkBlockDestroy();
+        void checkBlockPlace();
 
     private:
         Camera* m_camera;
