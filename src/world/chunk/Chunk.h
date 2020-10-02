@@ -37,6 +37,7 @@ class Chunk
 
         friend class ChunkMeshBuilder;
 
+
     private:
         std::array<BlockType, CHUNK_BLOCK_COUNT> m_blocks;
         

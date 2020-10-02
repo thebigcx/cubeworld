@@ -60,15 +60,15 @@ Mesh ChunkMeshBuilder::buildChunkMesh(Chunk& p_chunk)
 bool ChunkMeshBuilder::shouldBuildFace(Chunk& p_chunk, Vector3i normal, Vector3i pos)
 {
     Vector3i adj = pos + normal;
-
-    if (adj.x < 0 || adj.x >= CHUNK_WIDTH
-     || adj.y < 0 || adj.y >= CHUNK_HEIGHT
-     || adj.z < 0 || adj.z >= CHUNK_WIDTH)
+    
+    if (adj.y < 0 || adj.y > CHUNK_HEIGHT)
     {
+        return false;
+    }
 
-        // Check adjacent chunks
-        //Chunk& adjChunk = 
-        
+    // TEMPORARY
+    if (adj.x < 0 || adj.z < 0 || adj.x > CHUNK_WIDTH || adj.z > CHUNK_WIDTH)
+    {
         return true;
     }
     

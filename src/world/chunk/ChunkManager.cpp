@@ -7,12 +7,17 @@
 ChunkManager::ChunkManager(World& p_world)
 : m_world(&p_world)
 {
-    for (int x = 0 ; x < 20 ; x++)
+    for (int x = 0 ; x < 10 ; x++)
     {
-        for (int z = 0 ; z < 20 ; z++)
+        for (int z = 0 ; z < 10 ; z++)
         {
             loadChunk(x, z);
         }
+    }
+
+    for (int i = 0 ; i < m_chunks.size() ; i++)
+    {
+        m_chunkUpdateBatch.push_back(&m_chunks[i]);
     }
     
 }

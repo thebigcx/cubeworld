@@ -16,12 +16,12 @@ Chunk::Chunk(World& p_world, Vector2i p_position)
     {
         Timer timer;
         m_blocks = TerrainGenerator::generateChunk(p_position.x, p_position.y);
-        std::cout << "Generated chunk.\n";
+        std::cout << "Generated chunk in:\n";
     }
     {
         Timer timer;
         m_mesh = ChunkMeshBuilder::buildChunkMesh(*this);
-        std::cout << "Built mesh.\n";
+        std::cout << "Built mesh in:\n";
     }
     std::cout << "\n";
 
@@ -52,7 +52,7 @@ std::array<BlockType, CHUNK_BLOCK_COUNT> Chunk::getBlocks()
 
 int Chunk::getBlock(int x, int y, int z) const
 {
-    if (x < 0 || x > CHUNK_WIDTH || y < 0 || y > CHUNK_HEIGHT || x < 0 || x > CHUNK_WIDTH)
+    if (x < 0 || x > CHUNK_WIDTH || z < 0 || z > CHUNK_WIDTH)
     {
         // Out of bounds
         m_world->getBlock(x + (m_position.x * CHUNK_WIDTH), y, z + (m_position.y * CHUNK_WIDTH));
