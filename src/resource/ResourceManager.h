@@ -12,12 +12,12 @@ class ResourceManager
         static std::unordered_map<std::string, Shader> shaders;
         static std::unordered_map<std::string, Texture> textures;
 
-        static void addShader(std::string p_name, Shader p_shader);
-        static void addTexture(std::string p_name, Texture p_texture);
+        static void addShader(const std::string& p_name, Shader p_shader);
+        static void addTexture(const std::string& p_name, Texture p_texture);
 
-        static Shader& getShader(std::string p_name);
-        static Texture& getTexture(std::string p_name);
+        static Shader& getShader(const std::string& p_name);
+        static Texture& getTexture(const std::string& p_name);
 
-        static bool doesShaderExist(std::string p_name);
-        static bool doesTextureExist(std::string p_name);
+        static bool doesShaderExist(const std::string& p_name);
+        static bool doesTextureExist(const std::string& p_name);
 };

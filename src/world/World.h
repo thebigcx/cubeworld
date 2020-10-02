@@ -2,6 +2,8 @@
 
 #include "chunk/ChunkManager.h"
 
+class Player;
+
 class World
 {
     public:
@@ -16,7 +18,7 @@ class World
         void addChunkToUpdateList(int x, int z);
         void addChunkToUpdateList(Chunk& p_chunk);
 
-        void update();
+        void update(Player& p_player);
 
     private:
         ChunkManager m_chunkManager;

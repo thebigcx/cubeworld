@@ -62,7 +62,7 @@ void Game::run()
         player.handleInput(window);
         player.update(world);
 
-        world.update();
+        world.update(player);
         world.render();
 
         skybox.render();

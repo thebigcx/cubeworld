@@ -6,6 +6,8 @@ set(CMAKE_CXX_FLAGS "-O3")
 
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin) # Set the binrary output directory
 
+set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
+
 # Compile all files
 file(GLOB SOURCES CONFIGURE_DEPENDS
 src/util/stb_image/stb_image.cpp
@@ -42,4 +44,4 @@ include_directories(${CMAKE_SOURCE_DIR}/include)
 add_executable(CubeWorld ${SOURCES})
 
 # Link the OpenGL libraries
-target_link_libraries(CubeWorld glfw GL X11 pthread Xrandr Xi dl GLEW openal)
+target_link_libraries(CubeWorld glfw3 GL X11 pthread Xrandr Xi dl GLEW openal)

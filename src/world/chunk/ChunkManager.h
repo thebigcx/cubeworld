@@ -4,7 +4,9 @@
 
 #include "Chunk.h"
 
+
 class World;
+class Player;
 
 class ChunkManager
 {
@@ -25,7 +27,7 @@ class ChunkManager
 
         const Chunk& getChunk(int x, int z);
 
-        void update();
+        void update(Player& p_player);
 
         int getIndex(int x, int z);
 
@@ -34,4 +36,7 @@ class ChunkManager
         std::vector<Chunk*> m_chunkUpdateBatch;
 
         World* m_world;
+
+        Vector2i m_lastGenChunk;
+        Vector2i m_lastPlayerPos;
 };

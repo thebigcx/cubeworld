@@ -1,6 +1,7 @@
 #include "World.h"
 
 #include "chunk/ChunkMeshBuilder.h"
+#include "../player/Player.h"
 
 World::World()
 : m_chunkManager(*this)
@@ -55,7 +56,7 @@ void World::addChunkToUpdateList(Chunk& p_chunk)
     m_chunkManager.addChunkToUpdateBatch(p_chunk);
 }
 
-void World::update()
+void World::update(Player& p_player)
 {
-    m_chunkManager.update();
+    m_chunkManager.update(p_player);
 }

@@ -12,7 +12,7 @@ Texture::~Texture()
     //glDeleteTextures(1, &m_texture); // Don't need to - textures should always be global, as to save memory
 }
 
-bool Texture::loadFile(std::string p_file)
+bool Texture::loadFile(const std::string& p_file)
 {
     glGenTextures(1, &m_texture);
 

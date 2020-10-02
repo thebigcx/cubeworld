@@ -15,7 +15,7 @@ class Texture {
 
         void bind();
 
-        bool loadFile(std::string p_file);
+        bool loadFile(const std::string& p_file);
 
         void setSmooth(bool p_smooth = true);
         bool isSmooth() const;

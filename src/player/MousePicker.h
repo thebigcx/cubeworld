@@ -19,4 +19,8 @@ class MousePicker
         World* m_world;
 
         Vector3i getSelectedBlock(Ray ray, int rayOffset);
+
+        double m_lastPlaceTime = 0;
+
+        const double m_placeBlockDelay = 0.3; // In seconds
 };
