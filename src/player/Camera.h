@@ -24,7 +24,7 @@ class Camera
 
         void processInput(Window& p_window);
 
-        Camera& move(Vector3f p_dir);
+        Camera& move(glm::vec3 p_dir);
 
         glm::mat4 getViewMatrix()
         {
@@ -36,14 +36,19 @@ class Camera
             return m_projectionMatrix;
         }
 
-        Vector3f getPosition()
+        glm::vec3& getPosition()
         {
-            return Vector3f(m_position.x, m_position.y, m_position.z);
+            return m_position;
         }
 
-        Vector3f getDirection()
+        glm::vec3& getDirection()
         {
-            return Vector3f(m_direction.x, m_direction.y, m_direction.z);
+            return m_direction;
+        }
+
+        glm::vec3& getVelocity()
+        {
+            return m_velocity;
         }
 
     private:
@@ -59,5 +64,7 @@ class Camera
         float m_pan, m_tilt;
 
         float m_sensitivity = 0.1f;
-        const float m_speed = 0.5f;
+        const float m_speed = 0.1f;
+
+        glm::vec3 m_velocity;
 };

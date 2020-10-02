@@ -2,24 +2,26 @@
 
 #include "Vector3.h"
 
+#include <glm/glm.hpp>
+
 class Ray
 {
     public:
-        Ray(Vector3f pos, Vector3f mag);
+        Ray(glm::vec3 pos, glm::vec3 mag);
 
         bool intersectsWithPlane();
 
-        Vector3f getMagnitude()
+        glm::vec3 getMagnitude()
         {
             return m_magnitude;
         }
 
-        Vector3f getPosition()
+        glm::vec3 getPosition()
         {
             return m_position;
         }
 
     private:
-        Vector3f m_position;
-        Vector3f m_magnitude; // Normalised
+        glm::vec3 m_position;
+        glm::vec3 m_magnitude; // Normalised
 };

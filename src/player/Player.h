@@ -9,10 +9,13 @@ class Player
         Player(Window& p_window, World& p_world);
 
         void handleInput(Window& p_window);
-        void update();
+        void update(World& p_world);
+        void checkCollisions(World& p_world, glm::vec3 p_velocity, glm::vec3& p_position);
 
     private:
         Camera m_camera;
 
         MousePicker m_mousePicker;
+
+        glm::vec3 m_velocity;
 };

@@ -60,7 +60,7 @@ void Game::run()
         window.clear();
 
         player.handleInput(window);
-        player.update();
+        player.update(world);
 
         world.update();
         world.render();

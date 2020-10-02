@@ -1,6 +1,6 @@
 #include "Ray.h"
 
-Ray::Ray(Vector3f pos, Vector3f mag)
+Ray::Ray(glm::vec3 pos, glm::vec3 mag)
 : m_position(pos)
 , m_magnitude(mag)
 {
