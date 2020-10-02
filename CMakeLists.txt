@@ -2,6 +2,8 @@ cmake_minimum_required(VERSION 3.13) # Minimum CMake version
 project(CubeWorld)                   # Create project 'CubeWorld'
 set(CMAKE_CXX_STANDARD 20)           # Set the C++ standard VERSION
 
+set(CMAKE_CXX_FLAGS "-O3")
+
 set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ../bin) # Set the binrary output directory
 
 # Compile all files

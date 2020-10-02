@@ -8,29 +8,47 @@ MousePicker::MousePicker(Camera& p_camera, World& p_world)
 
 }
 
-void MousePicker::blockPicked()
+void MousePicker::checkBlockDestroy()
 {
     Ray ray(m_camera->getPosition(), m_camera->getDirection());
 
-    Vector3f rayMag = ray.getMagnitude();
-    Vector3f rayPos = ray.getPosition();
-
-    for (int i = 0 ; i < 10 ; i++)
+    for (int i = 0 ; i < 20 ; i++)
     {
         // Get the block coordinates
-        int x = floor(rayPos.x + (rayMag.x * i));
-        int y = floor(rayPos.y + (rayMag.y * i));
-        int z = floor(rayPos.z + (rayMag.z * i));
+        Vector3i rayPos = getSelectedBlock(ray, i/2);
+        Vector3i blockPos(rayPos.x % CHUNK_WIDTH, rayPos.y, rayPos.z % CHUNK_WIDTH);
+        Vector2i chunkPos(floor(rayPos.x / CHUNK_WIDTH), floor(rayPos.z / CHUNK_WIDTH));
 
+        if (rayPos.x < 0 || rayPos.y < 0 || rayPos.y > CHUNK_HEIGHT || rayPos.z < 0)
+        {
+            continue;
+        }
+        
         // Get the chunk in which the block resides
-        auto& chunk = m_world->getChunk(floor(x / 16), floor(z / 16));
+        auto& chunk = m_world->getChunk(chunkPos.x, chunkPos.y);
 
         // Make sure that the block isn't already air
-        if (chunk.getBlock(x % 16, y & 16, z % 16).getId() != BlockType::Air)
+        if (chunk.getBlock(blockPos.x, blockPos.y, blockPos.z) != BlockType::Air)
         {
             // Set the block to air and update the chunk
-            chunk.setBlock(Vector3i(x % 16, y % 16, z % 16), BlockType::Air);
-            m_world->addChunkToUpdateList(floor(x / 16), floor(z / 16));
+            chunk.setBlock(blockPos, BlockType::Air);
+            m_world->addChunkToUpdateList(chunk);
+            break;
         }
     }
+}
+
+/*void MousePicker::checkBlockPlace()
+{
+
+}*/
+
+Vector3i MousePicker::getSelectedBlock(Ray ray, int rayOffset)
+{
+    // Return the ray's start plus the direction it is heading, thus the block looking at
+    int x = floor(ray.getPosition().x + (ray.getMagnitude().x * rayOffset));
+    int y = floor(ray.getPosition().y + (ray.getMagnitude().y * rayOffset));
+    int z = floor(ray.getPosition().z + (ray.getMagnitude().z * rayOffset));
+
+    return Vector3i(x, y, z);
 }

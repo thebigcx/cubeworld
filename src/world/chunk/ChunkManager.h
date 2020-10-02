@@ -21,6 +21,9 @@ class ChunkManager
         bool chunkExists(int x, int z);
 
         void addChunkToUpdateBatch(int x, int z);
+        void addChunkToUpdateBatch(Chunk& p_chunk);
+
+        const Chunk& getChunk(int x, int z);
 
         void update();
 

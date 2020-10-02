@@ -6,16 +6,26 @@
 #include "../../util/math/Vector3.h"
 #include "../terrain/TerrainGenerator.h"
 #include "ChunkMeshBuilder.h"
+#include "../World.h"
+#include "../../util/Timer.h"
 
-Chunk::Chunk(Vector2i p_position)
+Chunk::Chunk(World& p_world, Vector2i p_position)
 : m_position(p_position)
+, m_world(&p_world)
 {
-    m_blocks = TerrainGenerator::generateChunk(p_position.x, p_position.y);
-    m_mesh = ChunkMeshBuilder::buildChunkMesh(*this);
-    
-    
+    {
+        Timer timer;
+        m_blocks = TerrainGenerator::generateChunk(p_position.x, p_position.y);
+        std::cout << "Generated chunk.\n";
+    }
+    {
+        Timer timer;
+        m_mesh = ChunkMeshBuilder::buildChunkMesh(*this);
+        std::cout << "Built mesh.\n";
+    }
+    std::cout << "\n";
 
-    m_mesh.setPosition(Vector3f(p_position.x * 16, 0, p_position.y * 16));
+    m_mesh.setPosition(Vector3f(p_position.x * 16.f, 0.f, p_position.y * 16.f));
 }
 
 void Chunk::render()
@@ -40,9 +50,15 @@ std::array<BlockType, CHUNK_BLOCK_COUNT> Chunk::getBlocks()
     return m_blocks;
 }
 
-BlockType Chunk::getBlock(int x, int y, int z)
+int Chunk::getBlock(int x, int y, int z) const
 {
-    return m_blocks[getIndex(x, y, z)];
+    if (x < 0 || x > CHUNK_WIDTH || y < 0 || y > CHUNK_HEIGHT || x < 0 || x > CHUNK_WIDTH)
+    {
+        // Out of bounds
+        m_world->getBlock(x + (m_position.x * CHUNK_WIDTH), y, z + (m_position.y * CHUNK_WIDTH));
+    }
+
+    return m_blocks[getIndex(x, y, z)].getId();
 }
 
 void Chunk::update()

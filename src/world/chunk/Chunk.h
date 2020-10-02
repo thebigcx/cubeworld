@@ -11,16 +11,18 @@ constexpr int CHUNK_HEIGHT = 64;
 
 constexpr unsigned int CHUNK_BLOCK_COUNT = CHUNK_WIDTH * CHUNK_WIDTH * CHUNK_HEIGHT;
 
+class World;
+
 class Chunk
 {
     public:
-        Chunk(Vector2i p_position);
+        Chunk(World& p_world, Vector2i p_position);
 
         void render();
 
         static int getIndex(int x, int y, int z);
 
-        BlockType getBlock(int x, int y, int z);
+        int getBlock(int x, int y, int z) const;
         
         std::array<BlockType, CHUNK_BLOCK_COUNT> getBlocks();
 
@@ -41,4 +43,6 @@ class Chunk
         Vector2i m_position;
 
         Mesh m_mesh;
+
+        World* m_world;
 };

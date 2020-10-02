@@ -9,11 +9,13 @@ class MousePicker
     public:
         MousePicker(Camera& p_cam, World& p_world);
 
-        void blockPicked();
+        void checkBlockDestroy();
 
     private:
         Camera* m_camera;
         glm::mat4 m_projection;
 
         World* m_world;
+
+        Vector3i getSelectedBlock(Ray ray, int rayOffset);
 };

@@ -27,7 +27,7 @@ class BlockType
             this->id = type;
         }
 
-        int getId()
+        int getId() const
         {
             return id;
         }

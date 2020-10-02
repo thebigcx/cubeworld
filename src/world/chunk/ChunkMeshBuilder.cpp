@@ -65,10 +65,14 @@ bool ChunkMeshBuilder::shouldBuildFace(Chunk& p_chunk, Vector3i normal, Vector3i
      || adj.y < 0 || adj.y >= CHUNK_HEIGHT
      || adj.z < 0 || adj.z >= CHUNK_WIDTH)
     {
+
+        // Check adjacent chunks
+        //Chunk& adjChunk = 
+        
         return true;
     }
     
-    if (p_chunk.getBlock(adj.x, adj.y, adj.z).getId() == BlockType::Air)
+    if (p_chunk.getBlock(adj.x, adj.y, adj.z) == BlockType::Air)
     {
         return true;
     }

@@ -15,7 +15,7 @@ void Player::handleInput(Window& p_window)
 
     if (p_window.isMouseClicked(GLFW_MOUSE_BUTTON_LEFT))
     {
-        m_mousePicker.blockPicked();
+        m_mousePicker.checkBlockDestroy();
     }
 }
 
