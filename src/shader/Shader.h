@@ -13,9 +13,12 @@
 
 class Shader {
     public:
-        Shader(std::string vertexPath, std::string fragmentPath);
+        Shader();
+        Shader(const std::string& vertexPath, const std::string& fragmentPath);
 
         void use();
+
+        void load(const std::string& vertex, const std::string& fragment);
 
         void setUniform(std::string p_name, int p_value);
         void setUniform(std::string p_name, bool p_value);

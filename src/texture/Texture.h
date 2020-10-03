@@ -13,7 +13,7 @@ class Texture {
 
         ~Texture();
 
-        void bind();
+        void bind() const;
 
         bool loadFile(const std::string& p_file);
 
@@ -25,7 +25,7 @@ class Texture {
 
         Vector2u getSize() const;
 
-        unsigned int getId()
+        unsigned int getId() const
         {
             return m_texture;
         }

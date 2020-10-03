@@ -11,20 +11,20 @@
 class Sprite : public Transformable
 {
     public:
-        Sprite(Texture& p_texture);
+        Sprite(const Texture& p_texture);
 
         unsigned int getVertices()
         {
             return m_vertArray;
         }
 
-        Texture* getTexture()
+        const Texture* getTexture()
         {
             return m_pTexture;
         }
 
     private:
-        Texture* m_pTexture;
+        const Texture* m_pTexture;
 
         unsigned int m_vertArray;
         unsigned int m_elementBuf, m_texCoordBuf, m_positionBuf;

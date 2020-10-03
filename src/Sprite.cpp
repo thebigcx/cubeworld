@@ -2,7 +2,7 @@
 
 #include <glm/gtc/matrix_transform.hpp>
 
-Sprite::Sprite(Texture& p_texture)
+Sprite::Sprite(const Texture& p_texture)
 : m_pTexture(&p_texture)
 {
     glGenVertexArrays(1, &m_vertArray);

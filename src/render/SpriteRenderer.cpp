@@ -14,7 +14,7 @@ void SpriteRenderer::add(Sprite& p_sprite)
 
 void SpriteRenderer::render()
 {
-    ResourceManager::getShader("ortho").use();
+    ResourceManager::shaders.get("ortho").use();
     unsigned int tex = 0; // Reduce texture bind() calls
     // TODO: one draw call for all sprites
     for (auto sprite : m_pSprites)
@@ -26,7 +26,7 @@ void SpriteRenderer::render()
 
         tex = sprite->getTexture()->getId();
 
-        ResourceManager::getShader("ortho").setUniform("model", sprite->getTransformationMatrix());
+        ResourceManager::shaders.get("ortho").setUniform("model", sprite->getTransformationMatrix());
         
         glBindVertexArray(sprite->getVertices());
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);

@@ -64,7 +64,7 @@ void Skybox::render()
     glDepthFunc(GL_LEQUAL);
     glDepthMask(GL_FALSE);
 
-    ResourceManager::getShader("skybox").use();
+    ResourceManager::shaders.get("skybox").use();
 
     glBindTexture(GL_TEXTURE_CUBE_MAP, m_textureId);
     glBindVertexArray(m_array);

@@ -87,7 +87,7 @@ bool Texture::isRepeated() const
     return m_repeated;
 }
 
-void Texture::bind()
+void Texture::bind() const
 {
     glBindTexture(GL_TEXTURE_2D, m_texture);
 }

@@ -1,6 +1,16 @@
 #include "Shader.h"
 
-Shader::Shader(std::string vertexPath, std::string fragmentPath)
+Shader::Shader()
+{
+    
+}
+
+Shader::Shader(const std::string& vertexPath, const std::string& fragmentPath)
+{
+    load(vertexPath, fragmentPath);
+}
+
+void Shader::load(const std::string& vertexPath, const std::string& fragmentPath)
 {
     std::string vertSource;
     std::string fragSource;
