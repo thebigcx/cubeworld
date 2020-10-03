@@ -20,10 +20,11 @@ class Shader {
 
         void load(const std::string& vertex, const std::string& fragment);
 
-        void setUniform(std::string p_name, int p_value);
-        void setUniform(std::string p_name, bool p_value);
-        void setUniform(std::string p_name, float p_value);
-        void setUniform(std::string p_name, glm::mat4 p_value);
+        void setUniform(const std::string& p_name, int p_value);
+        void setUniform(const std::string& p_name, bool p_value);
+        void setUniform(const std::string& p_name, float p_value);
+        void setUniform(const std::string& p_name, glm::mat4 p_value);
+        void setUniform(const std::string& p_name, glm::vec3 p_value);
 
         unsigned int getId() const;
 

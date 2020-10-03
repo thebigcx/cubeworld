@@ -13,8 +13,11 @@
 #include "texture/Skybox.h"
 #include "Sprite.h"
 #include "render/SpriteRenderer.h"
+#include "render/TextRenderer.h"
 
 #include "resource/ResourceManager.h"
+
+#include "util/Timer.h"
 
 Game::Game()
 {
@@ -30,10 +33,14 @@ void Game::run()
     Shader basicShader("shaders/basic.vert", "shaders/basic.frag");
     Shader skyboxShader("shaders/skybox.vert", "shaders/skybox.frag");
     Shader orthoShader("shaders/ortho.vert", "shaders/basic.frag");
+    Shader textShader("shaders/ortho.vert", "shaders/text.frag");
 
     ResourceManager::shaders.add("basic", basicShader);
     ResourceManager::shaders.add("skybox", skyboxShader);
     ResourceManager::shaders.add("ortho", orthoShader);
+    ResourceManager::shaders.add("text", textShader);
+
+    TextRenderer textRenderer;
 
     Texture texture;
     texture.loadFile("res/terrain.png");
@@ -62,12 +69,17 @@ void Game::run()
     ResourceManager::shaders.get("ortho").use();
     ResourceManager::shaders.get("ortho").setUniform("projection", orthoProj);
 
+    ResourceManager::shaders.get("text").use();
+    ResourceManager::shaders.get("text").setUniform("projection", orthoProj);
+    ResourceManager::shaders.get("text").setUniform("model", glm::mat4(1.f));
+
     glEnable(GL_DEPTH_TEST);
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
 
     while (window.isOpen())
     {
+        
         window.pollEvents();
 
         if (window.isKeyPressed(GLFW_KEY_ESCAPE))
@@ -83,9 +95,10 @@ void Game::run()
         world.update(player);
         world.render();
 
-        spriteRenderer.render();
-
         skybox.render();
+
+        spriteRenderer.render();
+        textRenderer.renderText("Hello, world!", 100, 100, 1, glm::vec3(0.2, 0.5, 0.78));   
 
         window.display();
     }

@@ -95,25 +95,32 @@ void Shader::use()
     glUseProgram(m_id);
 }
 
-void Shader::setUniform(std::string p_name, int p_value)
+void Shader::setUniform(const std::string& p_name, int p_value)
 {
     glUniform1i(glGetUniformLocation(m_id, p_name.c_str()), p_value);
 }
 
-void Shader::setUniform(std::string p_name, bool p_value)
+void Shader::setUniform(const std::string& p_name, bool p_value)
 {
     glUniform1i(glGetUniformLocation(m_id, p_name.c_str()), (int)p_value);
 }
 
-void Shader::setUniform(std::string p_name, float p_value)
+void Shader::setUniform(const std::string& p_name, float p_value)
 {
     glUniform1f(glGetUniformLocation(m_id, p_name.c_str()), p_value);
 }
 
-void Shader::setUniform(std::string p_name, glm::mat4 p_value)
+void Shader::setUniform(const std::string& p_name, glm::mat4 p_value)
 {
     glUniformMatrix4fv(glGetUniformLocation(m_id, p_name.c_str()), 1, GL_FALSE, glm::value_ptr(p_value));
 }
+
+void Shader::setUniform(const std::string& p_name, glm::vec3 p_value)
+{
+    glUniform3fv(glGetUniformLocation(m_id, p_name.c_str()), 1, glm::value_ptr(p_value));
+}
+
+
 
 unsigned int Shader::getId() const
 {
