@@ -29,6 +29,8 @@ src/world/World.cpp
 src/world/terrain/TerrainGenerator.cpp
 src/texture/Skybox.cpp
 src/player/MousePicker.cpp
+src/Sprite.cpp
+src/render/SpriteRenderer.cpp
 
 src/util/math/Ray.cpp
 

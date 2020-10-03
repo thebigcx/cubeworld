@@ -25,6 +25,11 @@ class Texture {
 
         Vector2u getSize() const;
 
+        unsigned int getId()
+        {
+            return m_texture;
+        }
+
     private:
         unsigned int m_texture;
 

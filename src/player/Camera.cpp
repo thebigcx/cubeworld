@@ -15,8 +15,8 @@ Camera::Camera(Window& p_window)
 
     glm::mat4 m_projectionMatrix = glm::perspective(fov, aspect, nearPlane, renderDistance);
 
-    ResourceManager::getShader("shader").use();
-    ResourceManager::getShader("shader").setUniform("projection", m_projectionMatrix);
+    ResourceManager::getShader("basic").use();
+    ResourceManager::getShader("basic").setUniform("projection", m_projectionMatrix);
 
     ResourceManager::getShader("skybox").use();
     ResourceManager::getShader("skybox").setUniform("projection", m_projectionMatrix);
@@ -32,8 +32,8 @@ void Camera::update()
 
     m_viewMatrix = glm::lookAt(m_position, m_position + m_direction, m_up);
 
-    ResourceManager::getShader("shader").use();
-    ResourceManager::getShader("shader").setUniform("view", m_viewMatrix);
+    ResourceManager::getShader("basic").use();
+    ResourceManager::getShader("basic").setUniform("view", m_viewMatrix);
 
     ResourceManager::getShader("skybox").use();
     ResourceManager::getShader("skybox").setUniform("view", glm::mat3(m_viewMatrix));

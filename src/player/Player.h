@@ -19,6 +19,11 @@ class Player
                             m_camera.getPosition().z);
         }
 
+        Camera& getCamera()
+        {
+            return m_camera;
+        }
+
     private:
         Camera m_camera;
 
