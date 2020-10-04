@@ -9,14 +9,12 @@ class Ray
     public:
         Ray(glm::vec3 pos, glm::vec3 mag);
 
-        bool intersectsWithPlane();
-
-        glm::vec3 getMagnitude()
+        glm::vec3 getMagnitude() const
         {
             return m_magnitude;
         }
 
-        glm::vec3 getPosition()
+        glm::vec3 getPosition() const
         {
             return m_position;
         }

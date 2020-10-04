@@ -9,7 +9,7 @@ Camera::Camera(Window& p_window)
     float windowWidth = (float)p_window.getSize().x;
     float windowHeight = (float)p_window.getSize().y;
     float aspect = windowWidth / windowHeight;
-    float fov = glm::radians(45.f);
+    float fov = glm::radians(55.f);
     float nearPlane = 0.1f;
     float renderDistance = 3000.f;
 
@@ -64,14 +64,6 @@ void Camera::processInput(Window& p_window)
     if (p_window.isKeyPressed(GLFW_KEY_D))
     {
         m_velocity += m_speed * glm::normalize(glm::cross(m_direction, m_up));
-    }
-    if (p_window.isKeyPressed(GLFW_KEY_SPACE))
-    {
-        m_velocity += m_speed * glm::vec3(0, 1, 0);
-    }
-    if (p_window.isKeyPressed(GLFW_KEY_LEFT_SHIFT))
-    {
-        m_velocity -= m_speed * glm::vec3(0, 1, 0);
     }
 
     Vector2d mousePos = p_window.getMousePosition();

@@ -30,4 +30,6 @@ class Player
         MousePicker m_mousePicker;
 
         glm::vec3 m_velocity;
+
+        bool m_onGround = false;
 };

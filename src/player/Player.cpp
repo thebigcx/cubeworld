@@ -8,11 +8,25 @@ Player::Player(Window& p_window, World& p_world)
 : m_camera(p_window)
 , m_mousePicker(m_camera, p_world)
 {
-
+    glm::vec3 spawnPoint;
+    spawnPoint.y = 60;
+    m_camera.setPosition(spawnPoint);
 }
 
 void Player::handleInput(Window& p_window)
 {
+    if (p_window.isKeyPressed(GLFW_KEY_SPACE))
+    {
+        //if (m_onGround)
+        //{
+            m_camera.getVelocity() += m_camera.getSpeed() * glm::vec3(0, 1, 0);
+        //}
+    }
+    if (p_window.isKeyPressed(GLFW_KEY_LEFT_SHIFT))
+    {
+        m_camera.getVelocity() -= m_camera.getSpeed() * glm::vec3(0, 1, 0);
+    }
+
     m_camera.processInput(p_window);
 
     if (p_window.isMouseClicked(GLFW_MOUSE_BUTTON_LEFT))
@@ -27,6 +41,15 @@ void Player::handleInput(Window& p_window)
 
 void Player::update(World& p_world)
 {
+    if (!m_onGround)
+    {
+        //m_camera.getVelocity().y -= m_camera.getSpeed(); // Gravity
+    }
+
+    m_onGround = false; // Reset for next update
+    
+    // Collisions
+
     m_camera.getPosition().x += m_camera.getVelocity().x;
     checkCollisions(p_world, glm::vec3(m_camera.getVelocity().x, 0, 0), m_camera.getPosition());
     
@@ -36,7 +59,17 @@ void Player::update(World& p_world)
     m_camera.getPosition().z += m_camera.getVelocity().z;
     checkCollisions(p_world, glm::vec3(0, 0, m_camera.getVelocity().z), m_camera.getPosition());
     
-    m_camera.getVelocity() = glm::vec3(0.f);
+    // Jumping
+
+    /*if (m_camera.getVelocity().y > 0)
+    {
+        m_camera.setVelocity(glm::vec3(0.f, m_camera.getVelocity().y * 0.85f, 0.f));
+    }
+    else
+    {*/
+        m_camera.setVelocity(glm::vec3(0.f, 0.f, 0.f));
+    //}
+    
     
     m_camera.update();
 }
@@ -46,9 +79,12 @@ void Player::checkCollisions(World& p_world, glm::vec3 p_velocity, glm::vec3& p_
     float pX = 1.f; // Player width
     float pY = 1.f; // Player height
     float pZ = 1.f; // Player depth
-    for (int x = m_camera.getPosition().x ; x < m_camera.getPosition().x + pX ; x++)
-    for (int y = m_camera.getPosition().y ; y < m_camera.getPosition().y + pY ; y++)
-    for (int z = m_camera.getPosition().z ; z < m_camera.getPosition().z + pZ ; z++)
+
+    auto cameraPos = m_camera.getPosition();
+
+    for (int x = (int)cameraPos.x ; x < cameraPos.x + pX ; x++)
+    for (int y = (int)cameraPos.y ; y < cameraPos.y + pY ; y++)
+    for (int z = (int)cameraPos.z ; z < cameraPos.z + pZ ; z++)
     {
         auto block = p_world.getBlock(x, y, z);
         if (BlockManager::getBlockData(block).collidable)
@@ -60,6 +96,7 @@ void Player::checkCollisions(World& p_world, glm::vec3 p_velocity, glm::vec3& p_
             else if (p_velocity.y < 0)
             {
                 p_position.y = y + pY;
+                m_onGround = true;
             }
 
             if (p_velocity.x > 0)
@@ -79,10 +116,6 @@ void Player::checkCollisions(World& p_world, glm::vec3 p_velocity, glm::vec3& p_
             {
                 p_position.z = z + pZ;
             }
-
-            
-
-            
         }
     }
 }

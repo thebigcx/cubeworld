@@ -12,6 +12,11 @@ MousePicker::MousePicker(Camera& p_camera, World& p_world)
 
 void MousePicker::checkBlockDestroy()
 {
+    if (glfwGetTime() - m_lastDestroyTime < m_destroyBlockDelay)
+    {
+        return; // Limit speed of destroying blocks
+    }
+
     glm::vec3 cameraPos(m_camera->getPosition().x, m_camera->getPosition().y, m_camera->getPosition().z);
     Ray ray(cameraPos, m_camera->getDirection());
 
@@ -31,6 +36,7 @@ void MousePicker::checkBlockDestroy()
             // Set the block to air and update the chunk
             chunk.setBlock(blockPos, BlockType::Air);
             m_world->addChunkToUpdateList(chunk);
+            m_lastDestroyTime = glfwGetTime();
             break;
         }
     }
@@ -48,10 +54,10 @@ void MousePicker::checkBlockPlace()
 
     Vector3i previous = getSelectedBlock(ray, 0);
 
-    for (int i = 0 ; i < 120 ; i++)
+    for (int i = 0 ; i < 200 ; i++)
     {
         // Get the position of the ray
-        Vector3i rayPos = getSelectedBlock(ray, i / 12);
+        Vector3i rayPos = getSelectedBlock(ray, i / 20);
 
         // Get the local chunk block coordinates
         Vector3i blockPos(rayPos.x % CHUNK_WIDTH, rayPos.y, rayPos.z % CHUNK_WIDTH);
@@ -85,7 +91,7 @@ void MousePicker::checkBlockPlace()
 }
 
 
-Vector3i MousePicker::getSelectedBlock(Ray ray, int rayOffset)
+Vector3i MousePicker::getSelectedBlock(const Ray& ray, int rayOffset)
 {
     // Return the ray's start plus the direction it is heading, thus the block looking at
     int x = round(ray.getPosition().x + (ray.getMagnitude().x * rayOffset));

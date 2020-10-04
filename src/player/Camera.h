@@ -12,12 +12,14 @@ class Camera
     public:
         Camera(Window& p_window);
 
-        Camera& setPosition(Vector3f p_position)
+        void setPosition(glm::vec3 p_position)
         {
-            m_position.x = p_position.x;
-            m_position.y = p_position.y;
-            m_position.z = p_position.z;
-            return *this;
+            m_position = p_position;
+        }
+
+        void setVelocity(glm::vec3 p_velocity)
+        {
+            m_velocity = p_velocity;
         }
 
         void update();
@@ -49,6 +51,11 @@ class Camera
         glm::vec3& getVelocity()
         {
             return m_velocity;
+        }
+
+        float getSpeed()
+        {
+            return m_speed;
         }
 
     private:
