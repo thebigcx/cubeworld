@@ -12,12 +12,13 @@ MousePicker::MousePicker(Camera& p_camera, World& p_world)
 
 void MousePicker::checkBlockDestroy()
 {
-    Ray ray(m_camera->getPosition(), m_camera->getDirection());
+    glm::vec3 cameraPos(m_camera->getPosition().x, m_camera->getPosition().y, m_camera->getPosition().z);
+    Ray ray(cameraPos, m_camera->getDirection());
 
-    for (int i = 0 ; i < 20 ; i++)
+    for (int i = 0 ; i < 120 ; i++)
     {
         // Get the block coordinates
-        Vector3i rayPos = getSelectedBlock(ray, i * 0.5f);
+        Vector3i rayPos = getSelectedBlock(ray, i / 12);
         Vector3i blockPos(rayPos.x % CHUNK_WIDTH, rayPos.y, rayPos.z % CHUNK_WIDTH);
         Vector2i chunkPos(floor(rayPos.x / CHUNK_WIDTH), floor(rayPos.z / CHUNK_WIDTH));
         
@@ -47,10 +48,10 @@ void MousePicker::checkBlockPlace()
 
     Vector3i previous = getSelectedBlock(ray, 0);
 
-    for (int i = 0 ; i < 20 ; i++)
+    for (int i = 0 ; i < 120 ; i++)
     {
         // Get the position of the ray
-        Vector3i rayPos = getSelectedBlock(ray, i * 0.5f);
+        Vector3i rayPos = getSelectedBlock(ray, i / 12);
 
         // Get the local chunk block coordinates
         Vector3i blockPos(rayPos.x % CHUNK_WIDTH, rayPos.y, rayPos.z % CHUNK_WIDTH);

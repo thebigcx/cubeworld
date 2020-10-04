@@ -21,8 +21,6 @@ class TextRenderer
 
         void renderText(Text& text);
         
-        void renderText(Font& font, const std::string& string, float x, float y, float scale, glm::vec3 color);
-
     private:
         Font m_font;
 

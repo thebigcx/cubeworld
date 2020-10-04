@@ -32,6 +32,14 @@ class Rect {
 			       other.y < y + height && other.y + other.height > y;
 		}
 
+		Vector2<T> getIntersection(Rect<T> other) const
+		{
+			Vector2<T> amount;
+			amount.x = abs(other.x - x + width);
+			amount.y = abs(other.y - y + height);
+			return amount;
+		}
+
 		T x, y, width, height;
 };
 

@@ -56,7 +56,6 @@ void Game::run()
     ResourceManager::fonts.add("minecraftia", font);
 
     Text text(font);
-    text.setString("Hello");
     text.setColor(glm::vec3(0.f, 0.f, 0.f));
     text.setPosition(Vector2f(20, window.getSize().y - 100));
 
@@ -120,13 +119,6 @@ void Game::run()
         }
         text.setString(std::to_string(fps) + " FPS");
         textRenderer.renderText(text);
-
-        textRenderer.renderText(ResourceManager::fonts.get("minecraftia"), 
-                                std::to_string(fps) + " FPS", 
-                                20, 
-                                window.getSize().y - 100, 
-                                1, 
-                                glm::vec3(0.f, 0.f, 0.f));
         
         window.display();
     }
