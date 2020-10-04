@@ -11,7 +11,7 @@
 #include "texture/TextureAtlas.h"
 #include "world/World.h"
 #include "texture/Skybox.h"
-#include "Sprite.h"
+#include "2D/Sprite.h"
 #include "render/SpriteRenderer.h"
 #include "render/TextRenderer.h"
 
@@ -51,10 +51,19 @@ void Game::run()
     ResourceManager::textures.add("crosshair", crosshair);
     Math::Random::initSeed();
 
+    Font font;
+    font.loadFile("res/Minecraftia.ttf");
+    ResourceManager::fonts.add("minecraftia", font);
+
+    Text text(font);
+    text.setString("Hello");
+    text.setColor(glm::vec3(0.f, 0.f, 0.f));
+    text.setPosition(Vector2f(100, 100));
+
     Skybox skybox;
 
     Sprite sprite(ResourceManager::textures.get("crosshair"));
-    sprite.setSize(Vector2f(50, 50));
+    sprite.setSize(Vector2f(20, window.getSize().y - 100));
     sprite.setPosition(Vector2f(window.getSize().x * 0.5f - 25, window.getSize().y * 0.5f - 25));
 
     SpriteRenderer spriteRenderer;
@@ -77,9 +86,12 @@ void Game::run()
     glEnable(GL_CULL_FACE);
     glCullFace(GL_BACK);
 
+    double frames = 0;
+    int fps = 0;
+    time_t beginTime = std::time(nullptr);
+
     while (window.isOpen())
     {
-        
         window.pollEvents();
 
         if (window.isKeyPressed(GLFW_KEY_ESCAPE))
@@ -98,8 +110,24 @@ void Game::run()
         skybox.render();
 
         spriteRenderer.render();
-        textRenderer.renderText("Hello, world!", 100, 100, 1, glm::vec3(0.2, 0.5, 0.78));   
 
+        frames++;
+        if (difftime(time(NULL), beginTime) >= 1.0)
+        {
+            fps = frames;
+            frames = 0;
+            beginTime = std::time(nullptr);
+        }
+        text.setString(std::to_string(fps) + " FPS");
+        textRenderer.renderText(text);
+
+        /*textRenderer.renderText(ResourceManager::fonts.get("minecraftia"), 
+                                std::to_string(fps) + " FPS", 
+                                20, 
+                                window.getSize().y - 100, 
+                                1, 
+                                glm::vec3(0.f, 0.f, 0.f));*/
+        
         window.display();
     }
 }

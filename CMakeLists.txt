@@ -31,10 +31,12 @@ src/world/World.cpp
 src/world/terrain/TerrainGenerator.cpp
 src/texture/Skybox.cpp
 src/player/MousePicker.cpp
-src/Sprite.cpp
+src/2D/Sprite.cpp
 src/render/SpriteRenderer.cpp
 src/render/TextRenderer.cpp
-src/texture/Glyph.cpp
+src/2D/text/Glyph.cpp
+src/2D/text/Font.cpp
+src/2D/text/Text.cpp
 
 src/util/math/Ray.cpp
 

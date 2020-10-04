@@ -1,7 +1,7 @@
 #pragma once
 
-#include "texture/Texture.h"
-#include "util/math/Vector3.h"
+#include "../texture/Texture.h"
+#include "../util/math/Vector3.h"
 #include "Transformable.h"
 
 #include <glm/glm.hpp>

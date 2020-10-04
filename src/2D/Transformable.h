@@ -3,8 +3,8 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 
-#include "util/math/Vector2.h"
-#include "util/math/Rect.h"
+#include "../util/math/Vector2.h"
+#include "../util/math/Rect.h"
 
 class Transformable
 {

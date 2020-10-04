@@ -10,28 +10,21 @@
 #include <freetype2/ft2build.h>
 #include FT_FREETYPE_H
 
-#include "../texture/Glyph.h"
-
-struct Character
-{
-    unsigned int textureID;
-    glm::ivec2 size;
-    glm::ivec2 bearing;
-    unsigned int advance;
-};
+#include "../2D/text/Glyph.h"
+#include "../2D/text/Font.h"
+#include "../2D/text/Text.h"
 
 class TextRenderer
 {
     public:
         TextRenderer();
 
-        void renderText(const std::string& string, float x, float y, float scale, glm::vec3 color);
+        void renderText(Text& text);
+        
+        void renderText(Font& font, const std::string& string, float x, float y, float scale, glm::vec3 color);
 
     private:
-        FT_Library m_ft;
-        FT_Face m_face;
-
-        std::unordered_map<char, Glyph> m_characters;
+        Font m_font;
 
         unsigned int m_vertArray, m_positions, m_texCoords, m_indices;
 
