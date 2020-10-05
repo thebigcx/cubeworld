@@ -38,7 +38,7 @@ int World::getBlock(int x, int y, int z)
     int bx = x % CHUNK_WIDTH;
     int bz = z % CHUNK_WIDTH;
 
-    if (x < 0 || y < 0 || z < 0 || y > CHUNK_HEIGHT)
+    if (x < 0 || y < 0 || z < 0 || y >= CHUNK_HEIGHT)
     {
         return BlockType::Air;
     }

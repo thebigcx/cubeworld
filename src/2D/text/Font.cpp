@@ -22,6 +22,8 @@ bool Font::loadFile(const std::string& path)
 
     FT_Set_Pixel_Sizes(m_face, 0, 48);
 
+    m_size = 48;
+
     // Load the character glyphs
     for (unsigned char c = 0 ; c < 255 ; c++) // 1 Byte per character
     {

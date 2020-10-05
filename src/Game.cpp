@@ -57,11 +57,16 @@ void Game::run()
 
     Text fpsCounter(font);
     fpsCounter.setColor(glm::vec3(0.f, 0.f, 0.f));
+    fpsCounter.setSize(Vector2f(48, 48));
     fpsCounter.setPosition(Vector2f(20, window.getSize().y - 100));
 
     Text positionText(font);
     positionText.setColor(glm::vec3(0.f, 0.f, 0.f));
+    positionText.setSize(Vector2f(48, 48));
     positionText.setPosition(Vector2f(window.getSize().x - 300, window.getSize().y - 100));
+
+    textRenderer.add(fpsCounter);
+    textRenderer.add(positionText);
 
     Skybox skybox;
 
@@ -122,14 +127,13 @@ void Game::run()
             beginTime = std::time(nullptr);
         }
         fpsCounter.setString(std::to_string(fps) + " FPS");
-        textRenderer.renderText(fpsCounter);
 
         std::string pos = std::to_string(player.getPosition().x) + ", " + 
                           std::to_string(player.getPosition().y) + ", " + 
                           std::to_string(player.getPosition().z);
 
         positionText.setString(pos);
-        textRenderer.renderText(positionText);
+        textRenderer.render();
         
         window.display();
     }

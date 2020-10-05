@@ -2,6 +2,7 @@
 
 #include <unordered_map>
 #include <iostream>
+#include <vector>
 
 #include <glm/glm.hpp>
 
@@ -19,7 +20,11 @@ class TextRenderer
     public:
         TextRenderer();
 
-        void renderText(Text& text);
+        void add(Text& text);
+
+        
+
+        void render();
         
     private:
         Font m_font;
@@ -30,4 +35,8 @@ class TextRenderer
             0, 1, 2,
             0, 2, 3
         };
+
+        std::vector<Text*> m_texts;
+
+        void renderText(Text& text);
 };

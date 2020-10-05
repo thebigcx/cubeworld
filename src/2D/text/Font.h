@@ -18,9 +18,14 @@ class Font
 
         bool loadFile(const std::string& path);
 
-        std::unordered_map<char, Glyph> getCharacters()
+        std::unordered_map<char, Glyph>& getCharacters()
         {
             return m_characters;
+        }
+
+        int getSize()
+        {
+            return m_size;
         }
 
     private:
@@ -30,4 +35,6 @@ class Font
         std::unordered_map<char, Glyph> m_characters;
 
         Glyph loadGlyph(char character) const;
+
+        int m_size = 0;
 };

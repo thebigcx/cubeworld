@@ -44,6 +44,19 @@ TextRenderer::TextRenderer()
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, 6 * sizeof(int), m_indexes, GL_STATIC_DRAW);
 }
 
+void TextRenderer::add(Text& text)
+{
+    m_texts.push_back(&text);
+}
+
+void TextRenderer::render()
+{
+    for (auto& text : m_texts)
+    {
+        this->renderText(*text);
+    }
+}
+
 void TextRenderer::renderText(Text& text)
 {
     ResourceManager::shaders.get("text").use();
@@ -59,16 +72,18 @@ void TextRenderer::renderText(Text& text)
     float x = text.getPosition().x;
     float y = text.getPosition().y;
 
+    glm::vec2 scale(text.getSize().x / text.getFont()->getSize(), text.getSize().y / text.getFont()->getSize());
+
     std::string::const_iterator c;
     for (c = text.getString().begin() ; c != text.getString().end() ; c++)
     {
         Glyph& character = text.getFont()->getCharacters()[*c];
 
-        float xPos = x + character.getBearing().x * 1;
-        float yPos = y - (character.getSize().y - character.getBearing().y) * 1;
+        float xPos = x + character.getBearing().x * scale.x;
+        float yPos = y - (character.getSize().y - character.getBearing().y) * scale.y;
 
-        float w = character.getSize().x * 1; // scale
-        float h = character.getSize().y * 1; // scale
+        float w = character.getSize().x * scale.x; // scale
+        float h = character.getSize().y * scale.y; // scale
 
         glm::mat4 model = glm::translate(glm::mat4(1.f), glm::vec3(xPos, yPos, 0.f));
         model = glm::scale(model, glm::vec3(w, h, 1.f));
@@ -79,7 +94,7 @@ void TextRenderer::renderText(Text& text)
 
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 
-        x += (character.getAdvance() >> 6) * 1; // scale
+        x += (character.getAdvance() >> 6) * scale.x; // scale
     }
 
     glEnable(GL_DEPTH_TEST);

@@ -44,33 +44,11 @@ bool ChunkManager::chunkExists(int x, int z)
 
 void ChunkManager::update(Player& p_player)
 {
-    // Generate chunks around the player
-    /*Vector2i pPos(p_player.getPosition().x / CHUNK_WIDTH - 1,
-                  p_player.getPosition().z / CHUNK_WIDTH - 1);
-
-    if (m_lastPlayerPos.x != pPos.x || m_lastPlayerPos.y != pPos.y)
-    {
-        m_lastGenChunk = pPos;
-        m_lastPlayerPos = pPos;
-    }
-    if (m_lastGenChunk.x < m_lastPlayerPos.x + 20)
-    {
-        loadChunk(m_lastGenChunk.x, m_lastGenChunk.y);
-        m_lastGenChunk.x++;
-    }
-    else
-    {
-        if (m_lastGenChunk.y < m_lastPlayerPos.y + 20)
-        {
-            m_lastGenChunk.y++;
-            m_lastGenChunk.x = 0;
-        }
-    }*/
-    for (auto chunk : m_chunkUpdateBatch)
+    for (Chunk* chunk : m_chunkUpdateBatch)
     {
         chunk->update();
     }
-    m_chunkUpdateBatch.clear();
+    m_chunkUpdateBatch.clear();   
 }
 
 void ChunkManager::addChunkToUpdateBatch(int x, int z)
