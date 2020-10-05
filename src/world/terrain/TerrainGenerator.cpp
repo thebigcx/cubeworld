@@ -43,7 +43,7 @@ BlockMap TerrainGenerator::generateChunk(int xPos, int zPos)
         }
     }
 
-    OSN::Noise<3> caveNoise;
+    /*OSN::Noise<3> caveNoise;
 
     for (int x = 0 ; x < CHUNK_WIDTH ; x++)
     for (int y = 0 ; y < CHUNK_HEIGHT ; y++)
@@ -58,7 +58,7 @@ BlockMap TerrainGenerator::generateChunk(int xPos, int zPos)
         {
             map[Chunk::getIndex(x, y, z)].setType(BlockType::Air);
         }
-    }
+    }*/
 
     return map;
 }

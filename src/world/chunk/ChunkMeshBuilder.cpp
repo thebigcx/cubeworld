@@ -66,10 +66,9 @@ bool ChunkMeshBuilder::shouldBuildFace(Chunk& p_chunk, Vector3i normal, Vector3i
         return false;
     }
 
-    // TEMPORARY
-    if (adj.x < 0 || adj.z < 0 || adj.x > CHUNK_WIDTH || adj.z > CHUNK_WIDTH)
+    if (adj.x + p_chunk.getPosition().x < 0 || adj.z + p_chunk.getPosition().y < 0)
     {
-        return true;
+        return false;
     }
     
     if (p_chunk.getBlock(adj.x, adj.y, adj.z) == BlockType::Air)

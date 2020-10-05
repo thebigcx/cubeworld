@@ -42,6 +42,11 @@ int World::getBlock(int x, int y, int z)
     {
         return BlockType::Air;
     }
+
+    if (!m_chunkManager.chunkExists(cx, cz))
+    {
+        return BlockType::Air;
+    }
     
     return m_chunkManager.getChunk(cx, cz).getBlock(bx, y, bz);
 }

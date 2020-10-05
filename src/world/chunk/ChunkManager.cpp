@@ -16,6 +16,11 @@ ChunkManager::ChunkManager(World& p_world)
             loadChunk(x, z);
         }
     }
+
+    for (int i = 0 ; i < m_chunks.size() ; i++)
+    {
+        m_chunkUpdateBatch.push_back(&m_chunks[i]);
+    }
 }
 
 Chunk& ChunkManager::loadChunk(int x, int z)

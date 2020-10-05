@@ -7,11 +7,11 @@ ResourceHolder<Font> ResourceManager::fonts;
 void ResourceManager::init()
 {
     static Texture tex;
-    tex.loadFile("res/terrainAtlas.png");
+    tex.loadFile("res/terrain.png");
     textures.setFailResource(tex);
 
     static Shader shader;
-    shader.load("shaders/basic.vert", "shaders/basic.frag");
+    shader.load("shaders/block.vert", "shaders/basic.frag");
     shaders.setFailResource(shader);
 
     static Font font;

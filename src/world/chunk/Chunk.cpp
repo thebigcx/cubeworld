@@ -14,16 +14,16 @@ Chunk::Chunk(World& p_world, Vector2i p_position)
 , m_world(&p_world)
 {
     {
-        Timer timer;
+        //Timer timer;
         m_blocks = TerrainGenerator::generateChunk(p_position.x, p_position.y);
-        std::cout << "Generated chunk in:\n";
+        //std::cout << "Generated chunk in:\n";
     }
     {
-        Timer timer;
+        //Timer timer;
         m_mesh = ChunkMeshBuilder::buildChunkMesh(*this);
-        std::cout << "Built mesh in:\n";
+        //std::cout << "Built mesh in:\n";
     }
-    std::cout << "\n";
+    //std::cout << "\n";
 
     m_mesh.setPosition(Vector3f(p_position.x * 16.f, 0.f, p_position.y * 16.f));
 }
@@ -52,10 +52,11 @@ std::array<BlockType, CHUNK_BLOCK_COUNT> Chunk::getBlocks()
 
 int Chunk::getBlock(int x, int y, int z) const
 {
-    if (x < 0 || x > CHUNK_WIDTH || z < 0 || z > CHUNK_WIDTH)
+    if (x < 0 || x >= CHUNK_WIDTH || z < 0 || z >= CHUNK_WIDTH)
     {
         // Out of bounds
-        m_world->getBlock(x + (m_position.x * CHUNK_WIDTH), y, z + (m_position.y * CHUNK_WIDTH));
+        Vector3i worldPos(x + (m_position.x * CHUNK_WIDTH), y, z + (m_position.y * CHUNK_WIDTH));
+        return m_world->getBlock(worldPos.x, worldPos.y, worldPos.z);
     }
 
     return m_blocks[getIndex(x, y, z)].getId();
