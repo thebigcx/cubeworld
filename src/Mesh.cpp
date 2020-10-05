@@ -2,7 +2,7 @@
 
 Mesh::Mesh()
 {
-    ResourceManager::shaders.get("basic").use();
+    ResourceManager::shaders.get("block").use();
 
     model = glm::mat4(1.f);
 
@@ -73,8 +73,8 @@ void Mesh::addFace(std::array<Vector3f, 4> p_positions, std::array<Vector2f, 4> 
 
 void Mesh::render()
 {
-    ResourceManager::shaders.get("basic").use();
-    ResourceManager::shaders.get("basic").setUniform("model", model);
+    ResourceManager::shaders.get("block").use();
+    ResourceManager::shaders.get("block").setUniform("model", model);
 
     ResourceManager::textures.get("terrainAtlas").bind();
 

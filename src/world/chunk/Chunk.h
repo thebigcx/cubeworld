@@ -36,6 +36,7 @@ class Chunk
         void update();
 
         friend class ChunkMeshBuilder;
+        friend class ChunkRenderer;
 
 
     private:

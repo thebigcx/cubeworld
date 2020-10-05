@@ -9,11 +9,11 @@ World::World()
     
 }
 
-void World::render()
+void World::render(ChunkRenderer& p_renderer)
 {
     for (auto& chunk : m_chunkManager.getChunks())
     {
-        chunk.render();
+        p_renderer.render(chunk);
     }
 }
 

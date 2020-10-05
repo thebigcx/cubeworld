@@ -17,10 +17,7 @@ void Player::handleInput(Window& p_window)
 {
     if (p_window.isKeyPressed(GLFW_KEY_SPACE))
     {
-        //if (m_onGround)
-        //{
-            m_camera.getVelocity() += m_camera.getSpeed() * glm::vec3(0, 1, 0);
-        //}
+        m_camera.getVelocity() += m_camera.getSpeed() * glm::vec3(0, 1, 0);
     }
     if (p_window.isKeyPressed(GLFW_KEY_LEFT_SHIFT))
     {
@@ -41,11 +38,6 @@ void Player::handleInput(Window& p_window)
 
 void Player::update(World& p_world)
 {
-    if (!m_onGround)
-    {
-        //m_camera.getVelocity().y -= m_camera.getSpeed(); // Gravity
-    }
-
     m_onGround = false; // Reset for next update
     
     // Collisions
@@ -59,17 +51,7 @@ void Player::update(World& p_world)
     m_camera.getPosition().z += m_camera.getVelocity().z;
     checkCollisions(p_world, glm::vec3(0, 0, m_camera.getVelocity().z), m_camera.getPosition());
     
-    // Jumping
-
-    /*if (m_camera.getVelocity().y > 0)
-    {
-        m_camera.setVelocity(glm::vec3(0.f, m_camera.getVelocity().y * 0.85f, 0.f));
-    }
-    else
-    {*/
-        m_camera.setVelocity(glm::vec3(0.f, 0.f, 0.f));
-    //}
-    
+    m_camera.setVelocity(glm::vec3(0.f, 0.f, 0.f));
     
     m_camera.update();
 }

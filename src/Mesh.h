@@ -29,6 +29,8 @@ class Mesh
 
         void setPosition(Vector3f p_pos);
 
+        unsigned int getVertexArray() { return m_array; }
+
     private:
         unsigned int m_array, m_elementBuffer, m_posBuffer, m_texCoordBuffer;
 

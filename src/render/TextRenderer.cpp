@@ -6,9 +6,6 @@
 
 TextRenderer::TextRenderer()
 {
-    m_font.loadFile("res/Minecraftia.ttf");
-
-
     glGenVertexArrays(1, &m_vertArray);
     glGenBuffers(1, &m_positions);
     glGenBuffers(1, &m_texCoords);
@@ -51,7 +48,7 @@ void TextRenderer::add(Text& text)
 
 void TextRenderer::render()
 {
-    for (auto& text : m_texts)
+    for (auto text : m_texts)
     {
         this->renderText(*text);
     }

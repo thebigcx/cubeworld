@@ -14,6 +14,7 @@
 #include "2D/Sprite.h"
 #include "render/SpriteRenderer.h"
 #include "render/TextRenderer.h"
+#include "render/ChunkRenderer.h"
 
 #include "resource/ResourceManager.h"
 
@@ -30,17 +31,18 @@ void Game::run()
 
     ResourceManager::init();
 
-    Shader basicShader("shaders/basic.vert", "shaders/basic.frag");
+    Shader blockShader("shaders/block.vert", "shaders/basic.frag");
     Shader skyboxShader("shaders/skybox.vert", "shaders/skybox.frag");
     Shader orthoShader("shaders/ortho.vert", "shaders/basic.frag");
     Shader textShader("shaders/ortho.vert", "shaders/text.frag");
 
-    ResourceManager::shaders.add("basic", basicShader);
+    ResourceManager::shaders.add("block", blockShader);
     ResourceManager::shaders.add("skybox", skyboxShader);
     ResourceManager::shaders.add("ortho", orthoShader);
     ResourceManager::shaders.add("text", textShader);
 
     TextRenderer textRenderer;
+    ChunkRenderer chunkRenderer;
 
     Texture texture;
     texture.loadFile("res/terrain.png");
@@ -109,13 +111,13 @@ void Game::run()
 
         window.clear();
 
+        skybox.render();
+
         player.handleInput(window);
         player.update(world);
 
         world.update(player);
-        world.render();
-
-        skybox.render();
+        world.render(chunkRenderer);
 
         spriteRenderer.render();
 
@@ -126,13 +128,14 @@ void Game::run()
             frames = 0;
             beginTime = std::time(nullptr);
         }
+
         fpsCounter.setString(std::to_string(fps) + " FPS");
 
-        std::string pos = std::to_string(player.getPosition().x) + ", " + 
-                          std::to_string(player.getPosition().y) + ", " + 
-                          std::to_string(player.getPosition().z);
+        std::stringstream pos;
+        glm::ivec3 playerPos = glm::ivec3(player.getPosition());
+        pos << playerPos.x << ", " << playerPos.y << ", " << playerPos.z;
 
-        positionText.setString(pos);
+        positionText.setString(pos.str());
         textRenderer.render();
         
         window.display();

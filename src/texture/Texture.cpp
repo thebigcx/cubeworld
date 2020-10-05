@@ -92,7 +92,7 @@ void Texture::bind() const
     glBindTexture(GL_TEXTURE_2D, m_texture);
 }
 
-Vector2u Texture::getSize() const
+glm::uvec2 Texture::getSize() const
 {
     return m_size;
 }

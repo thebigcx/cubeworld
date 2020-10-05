@@ -29,5 +29,4 @@ Sprite::Sprite(const Texture& p_texture)
     glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * 6, m_indices, GL_STATIC_DRAW);
 
     setSize(Vector2f(m_pTexture->getSize().x, m_pTexture->getSize().y));
-    //m_model = glm::scale(glm::mat4(1.f), glm::vec3(100.f, 100.f, 1.f));
 }

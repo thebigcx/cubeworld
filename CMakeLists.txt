@@ -34,6 +34,7 @@ src/player/MousePicker.cpp
 src/2D/Sprite.cpp
 src/render/SpriteRenderer.cpp
 src/render/TextRenderer.cpp
+src/render/ChunkRenderer.cpp
 src/2D/text/Glyph.cpp
 src/2D/text/Font.cpp
 src/2D/text/Text.cpp

@@ -27,8 +27,6 @@ class TextRenderer
         void render();
         
     private:
-        Font m_font;
-
         unsigned int m_vertArray, m_positions, m_texCoords, m_indices;
 
         static inline const int m_indexes[6] = {

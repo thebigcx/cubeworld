@@ -1,6 +1,7 @@
 #pragma once
 
 #include <GL/glew.h>
+#include <glm/glm.hpp>
 #include <stb_image/stb_image.h>
 
 #include <string>
@@ -23,7 +24,7 @@ class Texture {
         void setRepeated(bool p_repeated = true);
         bool isRepeated() const;
 
-        Vector2u getSize() const;
+        glm::uvec2 getSize() const;
 
         unsigned int getId() const
         {
@@ -37,5 +38,5 @@ class Texture {
         bool m_repeated = false;
         bool m_mipmapped = false;
 
-        Vector2u m_size;
+        glm::uvec2 m_size;
 };

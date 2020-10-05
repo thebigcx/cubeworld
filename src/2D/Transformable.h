@@ -81,12 +81,15 @@ class Transformable
             glm::vec3 pos(m_position.x, m_position.y, 0.f);
             glm::vec3 scalar(m_size.x, m_size.y, 1.f);
 
+            // Translate
             matrix = glm::translate(matrix, pos);
 
+            // Rotate (with respect to origin)
             matrix = glm::translate(matrix, glm::vec3(m_origin.x * m_size.x, m_origin.y * m_size.y, 0.f));
             matrix = glm::rotate(matrix, glm::radians((float)m_rotation), glm::vec3(0.f, 0.f, 1.f));
             matrix = glm::translate(matrix, glm::vec3(-m_origin.x * m_size.x, -m_origin.y * m_size.y, 0.f));
 
+            // Scale
             matrix = glm::scale(matrix, scalar);
 
             return matrix;
