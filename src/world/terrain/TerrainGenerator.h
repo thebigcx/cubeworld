@@ -14,6 +14,6 @@ struct TerrainGenerator
 
     public:
 
-        static BlockMap generateChunk(int xPos, int zPos);
+        static BlockMap generateChunk(int xPos, int zPos, long seed);
 
 };

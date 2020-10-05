@@ -9,13 +9,13 @@
 #include "../World.h"
 #include "../../util/Timer.h"
 
-Chunk::Chunk(World& p_world, Vector2i p_position)
+Chunk::Chunk(World& p_world, Vector2i p_position, long seed)
 : m_position(p_position)
 , m_world(&p_world)
 {
     {
         //Timer timer;
-        m_blocks = TerrainGenerator::generateChunk(p_position.x, p_position.y);
+        m_blocks = TerrainGenerator::generateChunk(p_position.x, p_position.y, seed);
         //std::cout << "Generated chunk in:\n";
     }
     {

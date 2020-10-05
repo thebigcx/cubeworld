@@ -11,7 +11,7 @@ class Player;
 class ChunkManager
 {
     public:
-        ChunkManager(World& p_world);
+        ChunkManager(World& p_world, long seed);
 
         std::vector<Chunk>& getChunks()
         {
@@ -20,8 +20,14 @@ class ChunkManager
 
         Chunk& loadChunk(int x, int z);
 
+        void setSeed(long seed)
+        {
+            m_seed = seed;
+        }
+
         bool chunkExists(int x, int z);
 
+        void updateNeighbourChunks(int x, int z);
         void addChunkToUpdateBatch(int x, int z);
         void addChunkToUpdateBatch(Chunk& p_chunk);
 
@@ -39,4 +45,6 @@ class ChunkManager
 
         Vector2i m_lastGenChunk;
         Vector2i m_lastPlayerPos;
+
+        long m_seed = 0l;
 };

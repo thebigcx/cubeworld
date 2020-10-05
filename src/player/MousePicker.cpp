@@ -12,6 +12,7 @@ MousePicker::MousePicker(Camera& p_camera, World& p_world)
 
 void MousePicker::checkBlockDestroy()
 {
+    Timer timer;
     if (glfwGetTime() - m_lastDestroyTime < m_destroyBlockDelay)
     {
         return; // Limit speed of destroying blocks
@@ -35,8 +36,22 @@ void MousePicker::checkBlockDestroy()
         {
             // Set the block to air and update the chunk
             chunk.setBlock(blockPos, BlockType::Air);
+
             m_world->addChunkToUpdateList(chunk);
+            
+            // Update surrounding chunks if necessary
+            if (blockPos.x == 0)
+                m_world->addChunkToUpdateList(chunkPos.x - 1, chunkPos.y);
+            else if (blockPos.x == CHUNK_WIDTH - 1)
+                m_world->addChunkToUpdateList(chunkPos.x + 1, chunkPos.y);
+            if (blockPos.y == 0)
+                m_world->addChunkToUpdateList(chunkPos.x, chunkPos.y - 1);
+            else if (blockPos.y == CHUNK_WIDTH - 1)
+                m_world->addChunkToUpdateList(chunkPos.x, chunkPos.y + 1);
+
+
             m_lastDestroyTime = glfwGetTime();
+
             break;
         }
     }
@@ -79,6 +94,7 @@ void MousePicker::checkBlockPlace()
             {*/
                 chunk.setBlock(previousBlockPos, BlockType::Dirt);
                 m_world->addChunkToUpdateList(chunk);
+                m_world->updateNeighbourChunks(chunkPos.x, chunkPos.y);
             //}
 
             m_lastPlaceTime = glfwGetTime();

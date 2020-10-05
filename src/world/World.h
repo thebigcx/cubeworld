@@ -21,6 +21,7 @@ class World
 
         int getBlock(int x, int y, int z);
 
+        void updateNeighbourChunks(int x, int z);
         void addChunkToUpdateList(int x, int z);
         void addChunkToUpdateList(Chunk& p_chunk);
 

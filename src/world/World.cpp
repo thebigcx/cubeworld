@@ -4,7 +4,7 @@
 #include "../player/Player.h"
 
 World::World()
-: m_chunkManager(*this)
+: m_chunkManager(*this, std::time(nullptr))
 {
     
 }
@@ -49,6 +49,11 @@ int World::getBlock(int x, int y, int z)
     }
     
     return m_chunkManager.getChunk(cx, cz).getBlock(bx, y, bz);
+}
+
+void World::updateNeighbourChunks(int x, int z)
+{
+    m_chunkManager.updateNeighbourChunks(x, z);
 }
 
 void World::addChunkToUpdateList(int x, int z)

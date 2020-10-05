@@ -4,10 +4,10 @@
 
 #include "../../util/math/noise/OpenSimplexNoise.hh"
 
-BlockMap TerrainGenerator::generateChunk(int xPos, int zPos)
+BlockMap TerrainGenerator::generateChunk(int xPos, int zPos, long seed)
 {
     BlockMap map;
-    OSN::Noise<2> noise;
+    OSN::Noise<2> noise(seed);
 
     for (int x = 0 ; x < CHUNK_WIDTH ; x++)
     for (int z = 0 ; z < CHUNK_WIDTH ; z++)
@@ -43,22 +43,22 @@ BlockMap TerrainGenerator::generateChunk(int xPos, int zPos)
         }
     }
 
-    /*OSN::Noise<3> caveNoise;
+    OSN::Noise<3> caveNoise;
 
     for (int x = 0 ; x < CHUNK_WIDTH ; x++)
     for (int y = 0 ; y < CHUNK_HEIGHT ; y++)
     for (int z = 0 ; z < CHUNK_WIDTH ; z++)
     {
-        float noiseX = (x + (xPos * CHUNK_WIDTH)) * 0.1f;
-        float noiseY = y * 0.1f;
-        float noiseZ = (z + (zPos * CHUNK_WIDTH)) * 0.1f;
+        float noiseX = (x + (xPos * CHUNK_WIDTH)) * 0.2f;
+        float noiseY = y * 0.2f;
+        float noiseZ = (z + (zPos * CHUNK_WIDTH)) * 0.2f;
         float val = caveNoise.eval(noiseX, noiseY, noiseZ);
 
         if (val > 0.3)
         {
             map[Chunk::getIndex(x, y, z)].setType(BlockType::Air);
         }
-    }*/
+    }
 
     return map;
 }

@@ -16,7 +16,7 @@ class World;
 class Chunk
 {
     public:
-        Chunk(World& p_world, Vector2i p_position);
+        Chunk(World& p_world, Vector2i p_position, long seed);
 
         void render();
 
