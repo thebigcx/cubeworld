@@ -5,7 +5,12 @@
 class ChunkRenderer
 {
     public:
-        ChunkRenderer() {};
+        ChunkRenderer();
+
+        void add(Mesh& mesh);
 
         void render(Chunk& p_chunk);
+    
+    private:
+        std::vector<Mesh*> m_pMeshes;
 };

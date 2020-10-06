@@ -13,10 +13,10 @@ class MousePicker
         void checkBlockPlace();
 
     private:
-        Camera* m_camera;
+        Camera* m_pCamera;
         glm::mat4 m_projection;
 
-        World* m_world;
+        World* m_pWorld;
 
         Vector3i getSelectedBlock(const Ray& ray, int rayOffset);
 

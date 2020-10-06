@@ -8,7 +8,7 @@ Player::Player(Window& p_window, World& p_world)
 : m_camera(p_window)
 , m_mousePicker(m_camera, p_world)
 {
-    glm::vec3 spawnPoint;
+    glm::vec3 spawnPoint(0, 0, 0);
     spawnPoint.y = 60;
     m_camera.setPosition(spawnPoint);
 }

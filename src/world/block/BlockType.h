@@ -9,7 +9,8 @@ class BlockType
             Air,
             Grass,
             Stone,
-            Dirt
+            Dirt,
+            TNT
         };
 
         BlockType()

@@ -19,6 +19,7 @@
 #include "resource/ResourceManager.h"
 
 #include "util/Timer.h"
+#include <../src/state/InGameState.h>
 
 Game::Game()
 {
@@ -40,6 +41,8 @@ void Game::run()
     ResourceManager::shaders.add("skybox", skyboxShader);
     ResourceManager::shaders.add("ortho", orthoShader);
     ResourceManager::shaders.add("text", textShader);
+    
+    InGameState inGameState(*this);
 
     TextRenderer textRenderer;
     ChunkRenderer chunkRenderer;
@@ -131,11 +134,10 @@ void Game::run()
 
         fpsCounter.setString(std::to_string(fps) + " FPS");
 
-        std::stringstream pos;
         glm::ivec3 playerPos = glm::ivec3(player.getPosition());
-        pos << playerPos.x << ", " << playerPos.y << ", " << playerPos.z;
+        std::string pos = std::to_string(playerPos.x) + ", " + std::to_string(playerPos.y) + ", " + std::to_string(playerPos.z);
 
-        positionText.setString(pos.str());
+        positionText.setString(pos);
         textRenderer.render();
         
         window.display();

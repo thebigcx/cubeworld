@@ -3,9 +3,9 @@
 #include "../util/Timer.h"
 
 MousePicker::MousePicker(Camera& p_camera, World& p_world)
-: m_camera(&p_camera)
+: m_pCamera(&p_camera)
 , m_projection(p_camera.getProjectionMatrix())
-, m_world(&p_world)
+, m_pWorld(&p_world)
 {
 
 }
@@ -18,8 +18,8 @@ void MousePicker::checkBlockDestroy()
         return; // Limit speed of destroying blocks
     }
 
-    glm::vec3 cameraPos(m_camera->getPosition().x, m_camera->getPosition().y, m_camera->getPosition().z);
-    Ray ray(cameraPos, m_camera->getDirection());
+    glm::vec3 cameraPos(m_pCamera->getPosition().x, m_pCamera->getPosition().y, m_pCamera->getPosition().z);
+    Ray ray(cameraPos, m_pCamera->getDirection());
 
     for (int i = 0 ; i < 120 ; i++)
     {
@@ -27,9 +27,14 @@ void MousePicker::checkBlockDestroy()
         Vector3i rayPos = getSelectedBlock(ray, i / 12);
         Vector3i blockPos(rayPos.x % CHUNK_WIDTH, rayPos.y, rayPos.z % CHUNK_WIDTH);
         Vector2i chunkPos(floor(rayPos.x / CHUNK_WIDTH), floor(rayPos.z / CHUNK_WIDTH));
+
+        if (!m_pWorld->chunkExists(chunkPos.x, chunkPos.y))
+        {
+            continue;
+        }
         
         // Get the chunk in which the block resides
-        auto& chunk = m_world->getChunk(chunkPos.x, chunkPos.y);
+        auto& chunk = m_pWorld->getChunk(chunkPos.x, chunkPos.y);
 
         // Make sure that the block isn't already air
         if (chunk.getBlock(blockPos.x, blockPos.y, blockPos.z) != BlockType::Air)
@@ -37,17 +42,17 @@ void MousePicker::checkBlockDestroy()
             // Set the block to air and update the chunk
             chunk.setBlock(blockPos, BlockType::Air);
 
-            m_world->addChunkToUpdateList(chunk);
+            m_pWorld->addChunkToUpdateList(chunk);
             
             // Update surrounding chunks if necessary
             if (blockPos.x == 0)
-                m_world->addChunkToUpdateList(chunkPos.x - 1, chunkPos.y);
+                m_pWorld->addChunkToUpdateList(chunkPos.x - 1, chunkPos.y);
             else if (blockPos.x == CHUNK_WIDTH - 1)
-                m_world->addChunkToUpdateList(chunkPos.x + 1, chunkPos.y);
+                m_pWorld->addChunkToUpdateList(chunkPos.x + 1, chunkPos.y);
             if (blockPos.y == 0)
-                m_world->addChunkToUpdateList(chunkPos.x, chunkPos.y - 1);
+                m_pWorld->addChunkToUpdateList(chunkPos.x, chunkPos.y - 1);
             else if (blockPos.y == CHUNK_WIDTH - 1)
-                m_world->addChunkToUpdateList(chunkPos.x, chunkPos.y + 1);
+                m_pWorld->addChunkToUpdateList(chunkPos.x, chunkPos.y + 1);
 
 
             m_lastDestroyTime = glfwGetTime();
@@ -65,7 +70,7 @@ void MousePicker::checkBlockPlace()
         return;
     }
     
-    Ray ray(m_camera->getPosition(), m_camera->getDirection());
+    Ray ray(m_pCamera->getPosition(), m_pCamera->getDirection());
 
     Vector3i previous = getSelectedBlock(ray, 0);
 
@@ -79,7 +84,7 @@ void MousePicker::checkBlockPlace()
 
         // Get the chunk coordinates
         Vector2i chunkPos(floor(rayPos.x / CHUNK_WIDTH), floor(rayPos.z / CHUNK_WIDTH));
-        auto& chunk = m_world->getChunk(chunkPos.x, chunkPos.y);
+        auto& chunk = m_pWorld->getChunk(chunkPos.x, chunkPos.y);
 
         // If the selected block is solid, allow a block to be placed on it
         if (chunk.getBlock(blockPos.x, blockPos.y, blockPos.z) != BlockType::Air)
@@ -92,9 +97,9 @@ void MousePicker::checkBlockPlace()
              && floor(m_camera->getPosition().y) != previousBlockPos.y
              && floor(m_camera->getPosition().z) != previousBlockPos.z)
             {*/
-                chunk.setBlock(previousBlockPos, BlockType::Dirt);
-                m_world->addChunkToUpdateList(chunk);
-                m_world->updateNeighbourChunks(chunkPos.x, chunkPos.y);
+                chunk.setBlock(previousBlockPos, BlockType::TNT);
+                m_pWorld->addChunkToUpdateList(chunk);
+                m_pWorld->updateNeighbourChunks(chunkPos.x, chunkPos.y);
             //}
 
             m_lastPlaceTime = glfwGetTime();

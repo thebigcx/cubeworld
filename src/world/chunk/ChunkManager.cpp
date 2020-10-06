@@ -8,6 +8,12 @@
 ChunkManager::ChunkManager(World& p_world, long seed)
 : m_world(&p_world)
 {
+    /*for (int x = 0 ; x < 16 ; x++)
+    for (int z = 0 ; z < 16 ; z++)
+    {
+        loadChunk(x, z);
+        updateNeighbourChunks(x, z);
+    }*/
     setSeed(seed);
 }
 
@@ -37,18 +43,20 @@ bool ChunkManager::chunkExists(int x, int z)
 
 void ChunkManager::update(Player& p_player)
 {
-    m_lastGenChunk.x++;
-    if (m_lastGenChunk.x >= 16)
+    int x = (p_player.getCamera().getPosition().x / CHUNK_WIDTH) - 3;
+    int z = (p_player.getCamera().getPosition().z / CHUNK_WIDTH) - 3;
+    
+    for (int i = x ; i < x + 6 ; i++)
+    for (int j = z ; j < z + 6 ; j++)
     {
-        m_lastGenChunk.x = 0;
-        m_lastGenChunk.y++;
+        if (!chunkExists(i, j))
+        {
+            loadChunk(i, j);
+            updateNeighbourChunks(i, j);
+            break;
+        }
     }
-    if (m_lastGenChunk.y <= 16)
-    {
-        loadChunk(m_lastGenChunk.x, m_lastGenChunk.y);
-        updateNeighbourChunks(m_lastGenChunk.x, m_lastGenChunk.y);
-    }
-
+    
     for (Chunk* chunk : m_chunkUpdateBatch)
     {
         chunk->update();
@@ -58,10 +66,17 @@ void ChunkManager::update(Player& p_player)
 
 void ChunkManager::updateNeighbourChunks(int x, int z)
 {
-    m_chunkUpdateBatch.push_back(&m_chunks[getIndex(x-1, z-1)]);
-    m_chunkUpdateBatch.push_back(&m_chunks[getIndex(x-1, z+1)]);
-    m_chunkUpdateBatch.push_back(&m_chunks[getIndex(x+1, z+1)]);
-    m_chunkUpdateBatch.push_back(&m_chunks[getIndex(x+1, z-1)]);
+    if (getIndex(x - 1, z - 1) != -1);
+        //m_chunkUpdateBatch.push_back(&m_chunks[getIndex(x - 1, z - 1)]);
+
+    if (getIndex(x - 1, z + 1) != -1);
+        //m_chunkUpdateBatch.push_back(&m_chunks[getIndex(x - 1, z + 1)]);
+
+    if (getIndex(x + 1, z + 1) != -1);
+        //m_chunkUpdateBatch.push_back(&m_chunks[getIndex(x + 1, z + 1)]);
+
+    if (getIndex(x + 1, z - 1) != -1);
+        //m_chunkUpdateBatch.push_back(&m_chunks[getIndex(x + 1, z - 1)]);
 }
 
 void ChunkManager::addChunkToUpdateBatch(int x, int z)
@@ -84,7 +99,7 @@ int ChunkManager::getIndex(int x, int z)
         }
     }
 
-    return 0;
+    return -1;
 }
 
 const Chunk& ChunkManager::getChunk(int x, int z)

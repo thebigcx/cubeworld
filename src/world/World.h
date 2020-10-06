@@ -18,6 +18,10 @@ class World
         {
             return m_chunkManager.getChunks();
         }
+        bool chunkExists(int x, int z)
+        {
+            return m_chunkManager.chunkExists(x, z);
+        }
 
         int getBlock(int x, int y, int z);
 
