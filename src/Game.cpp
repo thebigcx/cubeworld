@@ -3,7 +3,6 @@
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
-#include "Window.h"
 #include "Mesh.h"
 #include "shader/Shader.h"
 #include "player/Player.h"
@@ -22,13 +21,14 @@
 #include <../src/state/InGameState.h>
 
 Game::Game()
+: window(1920, 1080, "CubeWorld")
 {
 
 }
 
 void Game::run()
 {
-    Window window(1920, 1080, "CubeWorld");
+    
 
     ResourceManager::init();
 
@@ -111,6 +111,8 @@ void Game::run()
         {
             window.close();
         }
+
+        
 
         window.clear();
 

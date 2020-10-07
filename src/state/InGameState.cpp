@@ -4,6 +4,7 @@
 
 InGameState::InGameState(Game& game)
 : State(game)
+, m_player(game.window, m_world)
 {
     
 }

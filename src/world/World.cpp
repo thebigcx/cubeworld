@@ -32,13 +32,24 @@ Chunk& World::getChunk(int x, int z)
 
 int World::getBlock(int x, int y, int z)
 {
-    int cx = x / CHUNK_WIDTH;
-    int cz = z / CHUNK_WIDTH;
+    int cx = (x / CHUNK_WIDTH);
+    int cz = (z / CHUNK_WIDTH);
 
-    int bx = x % CHUNK_WIDTH;
-    int bz = z % CHUNK_WIDTH;
+    int bx = abs(x % CHUNK_WIDTH);
+    int bz = abs(z % CHUNK_WIDTH);
 
-    if (x < 0 || y < 0 || z < 0 || y >= CHUNK_HEIGHT)
+    std::cout << x << ", " << cx << ", " << bx << "\n";
+
+    if (x < 0)
+    {
+        bx = 16 - bx;
+    }
+    if (z < 0)
+    {
+        bz = 16 - bz;
+    }
+
+    if (y < 0 || y >= CHUNK_HEIGHT)
     {
         return BlockType::Air;
     }

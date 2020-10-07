@@ -43,13 +43,13 @@ void Player::update(World& p_world)
     // Collisions
 
     m_camera.getPosition().x += m_camera.getVelocity().x;
-    //checkCollisions(p_world, glm::vec3(m_camera.getVelocity().x, 0, 0), m_camera.getPosition());
+    checkCollisions(p_world, glm::vec3(m_camera.getVelocity().x, 0, 0), m_camera.getPosition());
     
     m_camera.getPosition().y += m_camera.getVelocity().y;
-    //checkCollisions(p_world, glm::vec3(0, m_camera.getVelocity().y, 0), m_camera.getPosition());
+    checkCollisions(p_world, glm::vec3(0, m_camera.getVelocity().y, 0), m_camera.getPosition());
     
     m_camera.getPosition().z += m_camera.getVelocity().z;
-    //checkCollisions(p_world, glm::vec3(0, 0, m_camera.getVelocity().z), m_camera.getPosition());
+    checkCollisions(p_world, glm::vec3(0, 0, m_camera.getVelocity().z), m_camera.getPosition());
     
     m_camera.setVelocity(glm::vec3(0.f, 0.f, 0.f));
     
@@ -69,6 +69,7 @@ void Player::checkCollisions(World& p_world, glm::vec3 p_velocity, glm::vec3& p_
     for (int z = (int)cameraPos.z ; z < cameraPos.z + pZ ; z++)
     {
         auto block = p_world.getBlock(x, y, z);
+        std::cout << BlockManager::getBlockData(block).collidable << "\n";
         if (BlockManager::getBlockData(block).collidable)
         {
             if (p_velocity.y > 0)

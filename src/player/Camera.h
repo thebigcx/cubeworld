@@ -71,7 +71,7 @@ class Camera
         float m_pan, m_tilt;
 
         float m_sensitivity = 0.1f;
-        const float m_speed = 0.5f;
+        const float m_speed = 0.1f;
 
         glm::vec3 m_velocity;
 };

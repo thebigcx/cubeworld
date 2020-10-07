@@ -8,12 +8,6 @@
 ChunkManager::ChunkManager(World& p_world, long seed)
 : m_world(&p_world)
 {
-    /*for (int x = 0 ; x < 16 ; x++)
-    for (int z = 0 ; z < 16 ; z++)
-    {
-        loadChunk(x, z);
-        updateNeighbourChunks(x, z);
-    }*/
     setSeed(seed);
 }
 

@@ -14,7 +14,7 @@ class World
 
         Chunk& getChunk(int x, int z);
 
-        std::vector<Chunk>& getChunks()
+        const std::vector<Chunk>& getChunks()
         {
             return m_chunkManager.getChunks();
         }

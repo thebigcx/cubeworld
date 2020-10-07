@@ -39,7 +39,6 @@ src/2D/text/Glyph.cpp
 src/2D/text/Font.cpp
 src/2D/text/Text.cpp
 src/state/InGameState.cpp
-src/render/MasterRenderer.cpp
 
 src/util/math/Ray.cpp
 
